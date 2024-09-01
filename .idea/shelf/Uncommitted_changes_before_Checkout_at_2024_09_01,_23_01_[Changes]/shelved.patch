@@ -1,0 +1,264 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"d6cbe158-3b9f-4272-85f5-7e71c61681e9\" name=\"Changes\" comment=\"&#10;Add AsyncValueWidget and use it in the product widgets Finished\">\n      <change afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/vcs.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change afterPath=\"$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"ClangdSettings\">\n    <option name=\"formatViaClangd\" value=\"false\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"section05-starter\" />\n      </map>\n    </option>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\n  \"selectedUrlAndAccountId\": {\n    \"url\": \"https://github.com/Mlungisi93/e-commerce_app.git\",\n    \"accountId\": \"aee8684e-0413-4f42-a7c8-0d65b8d2c775\"\n  }\n}]]></component>\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"PropertiesComponent\"><![CDATA[{\n  \"keyToString\": {\n    \"dart.analysis.tool.window.visible\": \"false\",\n    \"git-widget-placeholder\": \"section05-finished__mlue\"\n  }\n}]]></component>\n  <component name=\"TaskManager\">\n    <servers />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"&#10;Add AsyncValueWidget and use it in the product widgets Finished\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"&#10;Add AsyncValueWidget and use it in the product widgets Finished\" />\n  </component>\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,11 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="&#10;Add AsyncValueWidget and use it in the product widgets Finished">
+-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" afterDir="false" />
++    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="18 Add EmailPasswordSignInController">
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -18,31 +18,176 @@
+   <component name="ClangdSettings">
+     <option name="formatViaClangd" value="false" />
+   </component>
+-  <component name="Git.Settings">
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Dart File" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settingxs">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+         <entry key="$PROJECT_DIR$" value="section05-starter" />
+       </map>
+     </option>
+   </component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/Mlungisi93/e-commerce_app.git",
+-    "accountId": "aee8684e-0413-4f42-a7c8-0d65b8d2c775"
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/Mlungisi93/e-commerce_app.git&quot;,
++    &quot;accountId&quot;: &quot;aee8684e-0413-4f42-a7c8-0d65b8d2c775&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "dart.analysis.tool.window.visible": "false",
+-    "git-widget-placeholder": "section05-finished__mlue"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;section05-finished__mlue&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="TaskManager">
++    <task id="LOCAL-00001" summary="Add FakeAuthRepository">
++      <option name="closed" value="true" />
++      <created>1725189575933</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1725189575933</updated>
++    </task>
++    <task id="LOCAL-00002" summary="03 Creating repositories using abstract classes (optional)">
++      <option name="closed" value="true" />
++      <created>1725190096147</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1725190096147</updated>
++    </task>
++    <task id="LOCAL-00003" summary="04 Add RxDart 0.27.5 + InMemoryStore">
++      <option name="closed" value="true" />
++      <created>1725191984167</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1725191984167</updated>
++    </task>
++    <task id="LOCAL-00004" summary="05 Add RxDart 0.27.5 + InMemoryStore with StateNotifier option limitation">
++      <option name="closed" value="true" />
++      <created>1725192110607</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1725192110607</updated>
++    </task>
++    <task id="LOCAL-00005" summary="06 Implement/Using the inMemoryStore in the  FakeAuthRepository">
++      <option name="closed" value="true" />
++      <created>1725193271725</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1725193271725</updated>
++    </task>
++    <task id="LOCAL-00006" summary="07 Call ref.read(authRepositoryProvider).signOut() in AccountScreen">
++      <option name="closed" value="true" />
++      <created>1725194398772</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1725194398772</updated>
++    </task>
++    <task id="LOCAL-00007" summary="08 Add AccountScreenController">
++      <option name="closed" value="true" />
++      <created>1725196662912</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1725196662912</updated>
++    </task>
++    <task id="LOCAL-00008" summary="10 Add ref.listen to show alert dialog">
++      <option name="closed" value="true" />
++      <created>1725198414702</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1725198414702</updated>
++    </task>
++    <task id="LOCAL-00009" summary="11 Conditionally call Navigator.pop on sign out">
++      <option name="closed" value="true" />
++      <created>1725199439910</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1725199439910</updated>
++    </task>
++    <task id="LOCAL-00010" summary="12 Use AsyncValue.guard()">
++      <option name="closed" value="true" />
++      <created>1725199774803</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1725199774803</updated>
++    </task>
++    <task id="LOCAL-00011" summary="13 Add AsyncValueUI extension and removed void">
++      <option name="closed" value="true" />
++      <created>1725206247711</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1725206247711</updated>
++    </task>
++    <task id="LOCAL-00012" summary="17 Update EmailPasswordSignInState to use AsyncValue">
++      <option name="closed" value="true" />
++      <created>1725216339221</created>
++      <option name="number" value="00012" />
++      <option name="presentableId" value="LOCAL-00012" />
++      <option name="project" value="LOCAL" />
++      <updated>1725216339221</updated>
++    </task>
++    <task id="LOCAL-00013" summary="17 WORKING- Update EmailPasswordSignInState to use AsyncValue">
++      <option name="closed" value="true" />
++      <created>1725220599051</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1725220599051</updated>
++    </task>
++    <task id="LOCAL-00014" summary="18 Add EmailPasswordSignInController">
++      <option name="closed" value="true" />
++      <created>1725221165440</created>
++      <option name="number" value="00014" />
++      <option name="presentableId" value="LOCAL-00014" />
++      <option name="project" value="LOCAL" />
++      <updated>1725221165440</updated>
++    </task>
++    <option name="localTasksCounter" value="15" />
+     <servers />
+   </component>
+   <component name="VcsManagerConfiguration">
+     <MESSAGE value="&#10;Add AsyncValueWidget and use it in the product widgets Finished" />
+-    <option name="LAST_COMMIT_MESSAGE" value="&#10;Add AsyncValueWidget and use it in the product widgets Finished" />
++    <MESSAGE value="Add FakeAuthRepository" />
++    <MESSAGE value="03 Creating repositories using abstract classes (optional)" />
++    <MESSAGE value="04 Add RxDart 0.27.5 + InMemoryStore" />
++    <MESSAGE value="05 Add RxDart 0.27.5 + InMemoryStore with StateNotifier option limitation" />
++    <MESSAGE value="06 Implement/Using the inMemoryStore in the  FakeAuthRepository" />
++    <MESSAGE value="07 Call ref.read(authRepositoryProvider).signOut() in AccountScreen" />
++    <MESSAGE value="08 Add AccountScreenController" />
++    <MESSAGE value="10 Add ref.listen to show alert dialog" />
++    <MESSAGE value="11 Conditionally call Navigator.pop on sign out" />
++    <MESSAGE value="12 Use AsyncValue.guard()" />
++    <MESSAGE value="13 Add AsyncValueUI extension and removed void" />
++    <MESSAGE value="17 Update EmailPasswordSignInState to use AsyncValue" />
++    <MESSAGE value="17 WORKING- Update EmailPasswordSignInState to use AsyncValue" />
++    <MESSAGE value="18 Add EmailPasswordSignInController" />
++    <option name="LAST_COMMIT_MESSAGE" value="18 Add EmailPasswordSignInController" />
++  </component>
++  <component name="XDebuggerManager">
++    <breakpoint-manager>
++      <breakpoints>
++        <line-breakpoint enabled="true" type="Dart">
++          <url>file://$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart</url>
++          <line>37</line>
++          <option name="timeStamp" value="1" />
++        </line-breakpoint>
++      </breakpoints>
++    </breakpoint-manager>
+   </component>
+ </project>
+\ No newline at end of file
+Index: ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart
+===================================================================
+diff --git a/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart b/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart
+--- a/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart	
++++ b/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart	
+@@ -1,0 +1,43 @@
++import 'package:ecommerce_app/src/features/authentication/data/fake_auth_repository.dart';
++import 'package:ecommerce_app/src/features/authentication/data/fake_auth_repository.dart';
++import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/email_password_sign_in_state.dart';
++import 'package:flutter_riverpod/flutter_riverpod.dart';
++
++class EmailPasswordSignInController
++    extends StateNotifier<EmailPasswordSignInState> {
++  EmailPasswordSignInController({
++    required EmailPasswordSignInFormType formType,
++    required this.authRepository,
++  }) : super(EmailPasswordSignInState(formType: formType));
++  final FakeAuthRepository authRepository;
++
++  Future<bool> submit(String email, String password) async {
++    state = state.copyWith(value: const AsyncValue.loading());
++    final value = await AsyncValue.guard(() => _authenticate(email, password));
++    state = state.copyWith(value: value);
++    return value.hasError == false;
++  }
++
++  Future<void> _authenticate(String email, String password) {
++    switch (state.formType) {
++      case EmailPasswordSignInFormType.signIn:
++        return authRepository.signInWithEmailAndPassword(email, password);
++      case EmailPasswordSignInFormType.register:
++        return authRepository.createUserWithEmailAndPassword(email, password);
++    }
++  }
++
++  void updateFormType(EmailPasswordSignInFormType formType) {
++    state = state.copyWith(formType: formType);
++  }
++}
++
++final emailPasswordSignInControllerProvider = StateNotifierProvider.autoDispose
++    .family<EmailPasswordSignInController, EmailPasswordSignInState,
++        EmailPasswordSignInFormType>((ref, formType) {
++  final authRepository = ref.watch(authRepositoryProvider);
++  return EmailPasswordSignInController(
++    authRepository: authRepository,
++    formType: formType,
++  );
++});

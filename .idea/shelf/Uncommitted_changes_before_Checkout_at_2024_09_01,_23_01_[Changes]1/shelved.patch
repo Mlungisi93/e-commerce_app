@@ -1,0 +1,178 @@
+Index: ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:flutter_riverpod/flutter_riverpod.dart';\n\nimport '../../../utils/in_memory_store.dart';\nimport '../domain/app_user.dart';\n//Creating repositories using abstract classes (optional)\n// If desired, we can define a base abstract class for our AuthRepository:\n//\n// abstract class AuthRepository {\n//   Stream<AppUser?> authStateChanges();\n//   AppUser? get currentUser;\n//   Future<void> signInWithEmailAndPassword(String email, String password);\n//   Future<void> createUserWithEmailAndPassword(String email, String password);\n//   Future<void> signOut();\n// }\n//Creating repositories using abstract classes (optional)\n// If desired, we can define a base abstract class for our AuthRepository:\n//\n// abstract class AuthRepository {\n//   Stream<AppUser?> authStateChanges();\n//   AppUser? get currentUser;\n//   Future<void> signInWithEmailAndPassword(String email, String password);\n//   Future<void> createUserWithEmailAndPassword(String email, String password);\n//   Future<void> signOut();\n// }\n///And we can modify our provider to choose which repository to return based on some environment variable:\n//\n// final authRepositoryProvider = Provider<AuthRepository>((ref) {\n//   // Run with this command:\n//   // flutter run --dart-define=useFakeRepos=true/false\n//   final isFake = String.fromEnvironment('useFakeRepos') == 'true';\n//   return isFake ? FakeAuthRepository() : FirebaseAuthRepository();\n// });\n\n/// {@template fake_auth_repository}\n/// A fake implementation of [AuthRepository] for testing and development.\n/// {@endtemplate}\nclass FakeAuthRepository {\n  final _authState = InMemoryStore<AppUser?>(null);\n\n  /// Returns a stream of [AppUser] to represent the authentication state.\n  ///\n  /// {@template fake_auth_state_changes}\n  /// TODO: Update to emitactual authentication state changes.\n  /// {@endtemplate}\n  Stream<AppUser?> authStateChanges() => _authState.stream;\n\n  /// Returns the currently authenticated [AppUser], or `null` if no user is\n  /// signed in.\n  ///\n  /// {@template fake_current_user}\n  /// TODO: Update to return the actual current user.\n  /// {@endtemplate}\n  AppUser? get currentUser => _authState.value;\n\n  /// Signs in a user with the given email and password.\n  ///\n  /// {@template fake_sign_in_with_email_and_password}\n  /// TODO: Implement actual sign-in logic.\n  /// {@endtemplate}\n  Future<void> signInWithEmailAndPassword(String email, String password) async {\n    // TODO: Implement\n    if (currentUser == null) {\n      _createNewUser(email);\n    }\n  }\n\n  /// Creates a new user with the given email and password.\n  ///\n  /// {@template fake_create_user_with_email_and_password}\n  /// TODO: Implement actual user creation logic.\n  /// {@endtemplate}\n  Future<void> createUserWithEmailAndPassword(\n      String email, String password) async {\n    if (currentUser == null) {\n      _createNewUser(email);\n    }\n  }\n\n  /// Signs out the current user.\n  ///\n  /// {@template fake_sign_out}\n  /// TODO: Implement actual sign-out logic.\n  /// {@endtemplate}\n  Future<void> signOut() async {\n    // await Future.delayed(const Duration(seconds: 3));\n    // throw Exception('Connection failed');\n    _authState.value = null;\n  }\n\n  void dispose() => _authState.close();\n\n  void _createNewUser(String email) {\n    _authState.value = AppUser(\n      uid: email.split('').reversed.join(),\n      email: email,\n    );\n  }\n}\n\n/// Provides a [FakeAuthRepository] instance.\n///\n/// {@template auth_repository_provider}\n/// This provider is used for testing and development purposes.\n/// {@endtemplate}\nfinal authRepositoryProvider = Provider<FakeAuthRepository>((ref) {\n  final auth = FakeAuthRepository();\n  ref.onDispose(() => auth.dispose());\n  return auth;\n});\n\n/// Provides a stream of [AppUser] to represent the authentication state.\n///\n/// {@template auth_state_changes_provider}\n/// This provider listens to the [authStateChanges] stream from the\n/// [authRepositoryProvider] and emits the current authentication state.\n/// {@endtemplate}\nfinal authStateChangesProvider = StreamProvider.autoDispose<AppUser?>((ref) {\n  final authRepository = ref.watch(authRepositoryProvider);\n  return authRepository.authStateChanges();\n});\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart b/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart
+--- a/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart	
++++ b/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart	
+@@ -59,6 +59,8 @@
+   /// {@endtemplate}
+   Future<void> signInWithEmailAndPassword(String email, String password) async {
+     // TODO: Implement
++    // await Future.delayed(const Duration(seconds: 3));
++    // throw Exception('Connection failed');
+     if (currentUser == null) {
+       _createNewUser(email);
+     }
+Index: ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/email_password_sign_in_state.dart';\nimport 'package:ecommerce_app/src/features/authentication/presentation/sign_in/string_validators.dart';\nimport 'package:ecommerce_app/src/localization/string_hardcoded.dart';\nimport 'package:flutter/material.dart';\nimport 'package:flutter/services.dart';\nimport 'package:ecommerce_app/src/common_widgets/custom_text_button.dart';\nimport 'package:ecommerce_app/src/common_widgets/primary_button.dart';\nimport 'package:ecommerce_app/src/common_widgets/responsive_scrollable_card.dart';\nimport 'package:ecommerce_app/src/constants/app_sizes.dart';\nimport 'package:go_router/go_router.dart';\n\n/// Email & password sign in screen.\n/// Wraps the [EmailPasswordSignInContents] widget below with a [Scaffold] and\n/// [AppBar] with a title.\nclass EmailPasswordSignInScreen extends StatelessWidget {\n  const EmailPasswordSignInScreen({super.key, required this.formType});\n  final EmailPasswordSignInFormType formType;\n\n  // * Keys for testing using find.byKey()\n  static const emailKey = Key('email');\n  static const passwordKey = Key('password');\n\n  @override\n  Widget build(BuildContext context) {\n    return Scaffold(\n      appBar: AppBar(title: Text('Sign In'.hardcoded)),\n      body: EmailPasswordSignInContents(\n        formType: formType,\n        onSignedIn: () => context.pop(),\n      ),\n    );\n  }\n}\n\n/// A widget for email & password authentication, supporting the following:\n/// - sign in\n/// - register (create an account)\nclass EmailPasswordSignInContents extends StatefulWidget {\n  const EmailPasswordSignInContents({\n    super.key,\n    this.onSignedIn,\n    required this.formType,\n  });\n  final VoidCallback? onSignedIn;\n\n  /// The default form type to use.\n  final EmailPasswordSignInFormType formType;\n  @override\n  State<EmailPasswordSignInContents> createState() =>\n      _EmailPasswordSignInContentsState();\n}\n\nclass _EmailPasswordSignInContentsState\n    extends State<EmailPasswordSignInContents> {\n  final _formKey = GlobalKey<FormState>();\n  final _node = FocusScopeNode();\n  final _emailController = TextEditingController();\n  final _passwordController = TextEditingController();\n\n  String get email => _emailController.text;\n  String get password => _passwordController.text;\n\n  // local variable used to apply AutovalidateMode.onUserInteraction and show\n  // error hints only when the form has been submitted\n  // For more details on how this is implemented, see:\n  // https://codewithandrea.com/articles/flutter-text-field-form-validation/\n  var _submitted = false;\n  // local variable representing the form type and loading state\n  late var _state = EmailPasswordSignInState(formType: widget.formType);\n\n  @override\n  void dispose() {\n    // * TextEditingControllers should be always disposed\n    _node.dispose();\n    _emailController.dispose();\n    _passwordController.dispose();\n    super.dispose();\n  }\n\n  Future<void> _submit(EmailPasswordSignInState state) async {\n    setState(() => _submitted = true);\n    // only submit the form if validation passes\n    if (_formKey.currentState!.validate()) {\n      // TODO: Authentication logic\n      widget.onSignedIn?.call();\n    }\n  }\n\n  void _emailEditingComplete(EmailPasswordSignInState state) {\n    if (state.canSubmitEmail(email)) {\n      _node.nextFocus();\n    }\n  }\n\n  void _passwordEditingComplete(EmailPasswordSignInState state) {\n    if (!state.canSubmitEmail(email)) {\n      _node.previousFocus();\n      return;\n    }\n    _submit(state);\n  }\n\n  void _updateFormType(EmailPasswordSignInFormType formType) {\n    // * Toggle between register and sign in form\n    setState(() => _state = _state.copyWith(formType: formType));\n    // * Clear the password field when doing so\n    _passwordController.clear();\n  }\n\n  @override\n  Widget build(BuildContext context) {\n    return ResponsiveScrollableCard(\n      child: FocusScope(\n        node: _node,\n        child: Form(\n          key: _formKey,\n          child: Column(\n            crossAxisAlignment: CrossAxisAlignment.stretch,\n            children: <Widget>[\n              gapH8,\n              // Email field\n              TextFormField(\n                key: EmailPasswordSignInScreen.emailKey,\n                controller: _emailController,\n                decoration: InputDecoration(\n                  labelText: 'Email'.hardcoded,\n                  hintText: 'test@test.com'.hardcoded,\n                  enabled: !_state.isLoading,\n                ),\n                autovalidateMode: AutovalidateMode.onUserInteraction,\n                validator: (email) =>\n                    !_submitted ? null : _state.emailErrorText(email ?? ''),\n                autocorrect: false,\n                textInputAction: TextInputAction.next,\n                keyboardType: TextInputType.emailAddress,\n                keyboardAppearance: Brightness.light,\n                onEditingComplete: () => _emailEditingComplete(_state),\n                inputFormatters: <TextInputFormatter>[\n                  ValidatorInputFormatter(\n                      editingValidator: EmailEditingRegexValidator()),\n                ],\n              ),\n              gapH8,\n              // Password field\n              TextFormField(\n                key: EmailPasswordSignInScreen.passwordKey,\n                controller: _passwordController,\n                decoration: InputDecoration(\n                  labelText: _state.passwordLabelText,\n                  enabled: !_state.isLoading,\n                ),\n                autovalidateMode: AutovalidateMode.onUserInteraction,\n                validator: (password) => !_submitted\n                    ? null\n                    : _state.passwordErrorText(password ?? ''),\n                obscureText: true,\n                autocorrect: false,\n                textInputAction: TextInputAction.done,\n                keyboardAppearance: Brightness.light,\n                onEditingComplete: () => _passwordEditingComplete(_state),\n              ),\n              gapH8,\n              PrimaryButton(\n                text: _state.primaryButtonText,\n                isLoading: _state.isLoading,\n                onPressed: _state.isLoading ? null : () => _submit(_state),\n              ),\n              gapH8,\n              CustomTextButton(\n                text: _state.secondaryButtonText,\n                onPressed: _state.isLoading\n                    ? null\n                    : () => _updateFormType(_state.secondaryActionFormType),\n              ),\n            ],\n          ),\n        ),\n      ),\n    );\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart b/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart
+--- a/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart	
++++ b/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart	
+@@ -1,12 +1,15 @@
++import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart';
+ import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/email_password_sign_in_state.dart';
+ import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/string_validators.dart';
+ import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
++import 'package:ecommerce_app/src/utils/async_value_ui.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter/services.dart';
+ import 'package:ecommerce_app/src/common_widgets/custom_text_button.dart';
+ import 'package:ecommerce_app/src/common_widgets/primary_button.dart';
+ import 'package:ecommerce_app/src/common_widgets/responsive_scrollable_card.dart';
+ import 'package:ecommerce_app/src/constants/app_sizes.dart';
++import 'package:flutter_riverpod/flutter_riverpod.dart';
+ import 'package:go_router/go_router.dart';
+ 
+ /// Email & password sign in screen.
+@@ -35,7 +38,7 @@
+ /// A widget for email & password authentication, supporting the following:
+ /// - sign in
+ /// - register (create an account)
+-class EmailPasswordSignInContents extends StatefulWidget {
++class EmailPasswordSignInContents extends ConsumerStatefulWidget {
+   const EmailPasswordSignInContents({
+     super.key,
+     this.onSignedIn,
+@@ -46,12 +49,12 @@
+   /// The default form type to use.
+   final EmailPasswordSignInFormType formType;
+   @override
+-  State<EmailPasswordSignInContents> createState() =>
++  ConsumerState<EmailPasswordSignInContents> createState() =>
+       _EmailPasswordSignInContentsState();
+ }
+ 
+ class _EmailPasswordSignInContentsState
+-    extends State<EmailPasswordSignInContents> {
++    extends ConsumerState<EmailPasswordSignInContents> {
+   final _formKey = GlobalKey<FormState>();
+   final _node = FocusScopeNode();
+   final _emailController = TextEditingController();
+@@ -66,7 +69,6 @@
+   // https://codewithandrea.com/articles/flutter-text-field-form-validation/
+   var _submitted = false;
+   // local variable representing the form type and loading state
+-  late var _state = EmailPasswordSignInState(formType: widget.formType);
+ 
+   @override
+   void dispose() {
+@@ -81,8 +83,13 @@
+     setState(() => _submitted = true);
+     // only submit the form if validation passes
+     if (_formKey.currentState!.validate()) {
+-      // TODO: Authentication logic
+-      widget.onSignedIn?.call();
++      // Implementing: Authentication logic
++      final controller = ref.read(
++          emailPasswordSignInControllerProvider(widget.formType).notifier);
++      final success = await controller.submit(email, password);
++      if (success) {
++        widget.onSignedIn?.call();
++      }
+     }
+   }
+ 
+@@ -102,13 +109,21 @@
+ 
+   void _updateFormType(EmailPasswordSignInFormType formType) {
+     // * Toggle between register and sign in form
+-    setState(() => _state = _state.copyWith(formType: formType));
++    ref
++        .read(emailPasswordSignInControllerProvider(widget.formType).notifier)
++        .updateFormType(formType);
+     // * Clear the password field when doing so
+     _passwordController.clear();
+   }
+ 
+   @override
+   Widget build(BuildContext context) {
++    ref.listen<EmailPasswordSignInState>(
++      emailPasswordSignInControllerProvider(widget.formType),
++      (_, state) => state.value.showAlertDialogOnError(context),
++    );
++    final state =
++        ref.watch(emailPasswordSignInControllerProvider(widget.formType));
+     return ResponsiveScrollableCard(
+       child: FocusScope(
+         node: _node,
+@@ -125,16 +140,16 @@
+                 decoration: InputDecoration(
+                   labelText: 'Email'.hardcoded,
+                   hintText: 'test@test.com'.hardcoded,
+-                  enabled: !_state.isLoading,
++                  enabled: !state.isLoading,
+                 ),
+                 autovalidateMode: AutovalidateMode.onUserInteraction,
+                 validator: (email) =>
+-                    !_submitted ? null : _state.emailErrorText(email ?? ''),
++                    !_submitted ? null : state.emailErrorText(email ?? ''),
+                 autocorrect: false,
+                 textInputAction: TextInputAction.next,
+                 keyboardType: TextInputType.emailAddress,
+                 keyboardAppearance: Brightness.light,
+-                onEditingComplete: () => _emailEditingComplete(_state),
++                onEditingComplete: () => _emailEditingComplete(state),
+                 inputFormatters: <TextInputFormatter>[
+                   ValidatorInputFormatter(
+                       editingValidator: EmailEditingRegexValidator()),
+@@ -146,31 +161,31 @@
+                 key: EmailPasswordSignInScreen.passwordKey,
+                 controller: _passwordController,
+                 decoration: InputDecoration(
+-                  labelText: _state.passwordLabelText,
+-                  enabled: !_state.isLoading,
++                  labelText: state.passwordLabelText,
++                  enabled: !state.isLoading,
+                 ),
+                 autovalidateMode: AutovalidateMode.onUserInteraction,
+                 validator: (password) => !_submitted
+                     ? null
+-                    : _state.passwordErrorText(password ?? ''),
++                    : state.passwordErrorText(password ?? ''),
+                 obscureText: true,
+                 autocorrect: false,
+                 textInputAction: TextInputAction.done,
+                 keyboardAppearance: Brightness.light,
+-                onEditingComplete: () => _passwordEditingComplete(_state),
++                onEditingComplete: () => _passwordEditingComplete(state),
+               ),
+               gapH8,
+               PrimaryButton(
+-                text: _state.primaryButtonText,
+-                isLoading: _state.isLoading,
+-                onPressed: _state.isLoading ? null : () => _submit(_state),
++                text: state.primaryButtonText,
++                isLoading: state.isLoading,
++                onPressed: state.isLoading ? null : () => _submit(state),
+               ),
+               gapH8,
+               CustomTextButton(
+-                text: _state.secondaryButtonText,
+-                onPressed: _state.isLoading
++                text: state.secondaryButtonText,
++                onPressed: state.isLoading
+                     ? null
+-                    : () => _updateFormType(_state.secondaryActionFormType),
++                    : () => _updateFormType(state.secondaryActionFormType),
+               ),
+             ],
+           ),
