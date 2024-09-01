@@ -16,6 +16,7 @@ class AccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        //
         title: Text('Account'.hardcoded),
         actions: [
           ActionTextButton(
