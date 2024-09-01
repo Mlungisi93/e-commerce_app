@@ -1,6 +1,7 @@
-import 'package:ecommerce_app/src/features/shopping_cart/shopping_cart_screen.dart';
+import 'package:ecommerce_app/src/routing/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce_app/src/constants/app_sizes.dart';
+import 'package:go_router/go_router.dart';
 
 /// Shopping cart icon with items count badge
 class ShoppingCartIcon extends StatelessWidget {
@@ -17,15 +18,16 @@ class ShoppingCartIcon extends StatelessWidget {
       children: [
         Center(
           child: IconButton(
-            key: shoppingCartIconKey,
-            icon: const Icon(Icons.shopping_cart),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(
-                fullscreenDialog: true,
-                builder: (_) => const ShoppingCartScreen(),
+              key: shoppingCartIconKey,
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () => context.goNamed(AppRoute.cart.name)
+              // onPressed: () => Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     fullscreenDialog: true,
+              //     builder: (_) => const ShoppingCartScreen(),
+              //   ),
+              // ),
               ),
-            ),
-          ),
         ),
         if (cartItemsCount > 0)
           const Positioned(
