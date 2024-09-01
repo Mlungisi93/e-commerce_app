@@ -54,11 +54,12 @@ class AccountScreen extends ConsumerWidget {
               if (logout == true) {
                 /// separating between UI and business Logic this code await ref.read(authRepositoryProvider).signOut();
                 // Implemented only pop on success
-                await ref
+                final success = await ref
                     .read(accountScreenControllerProvider.notifier)
                     .signOut();
-              // TODO: only pop on success
-              // goRouter.pop();
+                if (success) {
+                  goRouter.pop();
+                }
               }
             },
           ),
