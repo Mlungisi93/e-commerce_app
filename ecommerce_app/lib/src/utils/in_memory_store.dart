@@ -20,3 +20,18 @@ class InMemoryStore<T> {
   /// Don't forget to call this when done
   void close() => _subject.close();
 }
+//Can we use StateNotifier instead?
+// One alternative I considered is to use the StateNotifier class that is included with the Riverpod package.
+//
+// By using this, the InMemoryStore class could be implemented as:
+//
+// class InMemoryStoreR<T> extends StateNotifier<T> {
+//   InMemoryStoreR(T initial) : super(initial);
+//   /// * StateNotifier already has a `stream` property that can be accessed directly
+//
+//   // A synchronous getter for the current value
+//   T get value => state;
+//   // A setter for updating the data
+//   set value(T value) => state = value;
+// }
+// However, this does not work as intended in practice because when you access a StateNotifier’s stream, it won’t remember the last value, a
