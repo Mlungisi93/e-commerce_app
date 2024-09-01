@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../utils/in_memory_store.dart';
 import '../domain/app_user.dart';
 //Creating repositories using abstract classes (optional)
 // If desired, we can define a base abstract class for our AuthRepository:
@@ -34,15 +35,14 @@ import '../domain/app_user.dart';
 /// A fake implementation of [AuthRepository] for testing and development.
 /// {@endtemplate}
 class FakeAuthRepository {
-  /// {@macro fake_auth_repository}
-  FakeAuthRepository();
+  final _authState = InMemoryStore<AppUser?>(null);
 
   /// Returns a stream of [AppUser] to represent the authentication state.
   ///
   /// {@template fake_auth_state_changes}
   /// TODO: Update to emitactual authentication state changes.
   /// {@endtemplate}
-  Stream<AppUser?> authStateChanges() => Stream.value(null);
+  Stream<AppUser?> authStateChanges() => _authState.stream;
 
   /// Returns the currently authenticated [AppUser], or `null` if no user is
   /// signed in.
@@ -50,7 +50,7 @@ class FakeAuthRepository {
   /// {@template fake_current_user}
   /// TODO: Update to return the actual current user.
   /// {@endtemplate}
-  AppUser? get currentUser => null;
+  AppUser? get currentUser => _authState.value;
 
   /// Signs in a user with the given email and password.
   ///
@@ -59,6 +59,9 @@ class FakeAuthRepository {
   /// {@endtemplate}
   Future<void> signInWithEmailAndPassword(String email, String password) async {
     // TODO: Implement
+    if (currentUser == null) {
+      _createNewUser(email);
+    }
   }
 
   /// Creates a new user with the given email and password.
@@ -68,7 +71,9 @@ class FakeAuthRepository {
   /// {@endtemplate}
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
-    // TODO: Implement
+    if (currentUser == null) {
+      _createNewUser(email);
+    }
   }
 
   /// Signs out the current user.
@@ -77,7 +82,16 @@ class FakeAuthRepository {
   /// TODO: Implement actual sign-out logic.
   /// {@endtemplate}
   Future<void> signOut() async {
-    // TODO: Implement
+    _authState.value = null;
+  }
+
+  void dispose() => _authState.close();
+
+  void _createNewUser(String email) {
+    _authState.value = AppUser(
+      uid: email.split('').reversed.join(),
+      email: email,
+    );
   }
 }
 
@@ -87,7 +101,9 @@ class FakeAuthRepository {
 /// This provider is used for testing and development purposes.
 /// {@endtemplate}
 final authRepositoryProvider = Provider<FakeAuthRepository>((ref) {
-  return FakeAuthRepository();
+  final auth = FakeAuthRepository();
+  ref.onDispose(() => auth.dispose());
+  return auth;
 });
 
 /// Provides a stream of [AppUser] to represent the authentication state.
