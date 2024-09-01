@@ -25,7 +25,7 @@ enum AppRoute {
 final goRouter = GoRouter(
   initialLocation: '/',
   //all the navigation events will be logged to the console
-  debugLogDiagnostics: true,
+  debugLogDiagnostics: false,
   // represent all our pages we want to show in our app
   routes: [
     GoRoute(
@@ -47,7 +47,6 @@ final goRouter = GoRouter(
               pageBuilder: (context, state) {
                 final productId = state.pathParameters['id']!;
                 return MaterialPage(
-                  key: state.pageKey,
                   fullscreenDialog: true,
                   child: LeaveReviewScreen(productId: productId),
                 );
@@ -67,10 +66,9 @@ final goRouter = GoRouter(
             GoRoute(
               path: 'checkout',
               name: AppRoute.checkout.name,
-              pageBuilder: (context, state) => MaterialPage(
-                key: state.pageKey,
+              pageBuilder: (context, state) => const MaterialPage(
                 fullscreenDialog: true,
-                child: const CheckoutScreen(),
+                child: CheckoutScreen(),
               ),
             ),
           ],
