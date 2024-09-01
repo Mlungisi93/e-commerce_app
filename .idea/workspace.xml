@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cd2b33bf-0639-44eb-9f8e-f7e574464fb3" name="Changes" comment="Section 3 finished">
+      <change afterPath="$PROJECT_DIR$/.idea/other.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/common_widgets/async_value_widget.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/web_entrypoint.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/cart/presentation/shopping_cart/shopping_cart_item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/cart/presentation/shopping_cart/shopping_cart_item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/orders/presentation/orders_list/order_item_list_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/orders/presentation/orders_list/order_item_list_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/data/fake_products_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/data/fake_products_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/presentation/product_screen/product_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/presentation/product_screen/product_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/presentation/products_list/products_grid.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/presentation/products_list/products_grid.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="section13-finished" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Mlungisi93"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Mlungisi93/e-commerce_app.git",
+    "accountId": "aee8684e-0413-4f42-a7c8-0d65b8d2c775"
+  }
+}]]></component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "section04-starter",
+    "settings.editor.selected.configurable": "editor.preferences.appearance"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Section 3 finished">
+      <option name="closed" value="true" />
+      <created>1725162821503</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725162821503</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Section 3 starter" />
+    <MESSAGE value="Section 3 finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Section 3 finished" />
+  </component>
+</project>
