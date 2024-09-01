@@ -1,9 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:ffi';
-
 import 'package:ecommerce_app/src/features/authentication/presentation/sign_in/string_validators.dart';
 import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 /// Form type for email & password authentication
@@ -19,7 +16,6 @@ mixin EmailAndPasswordValidators {
 }
 
 /// State class for the email & password form.
-@immutable
 class EmailPasswordSignInState with EmailAndPasswordValidators {
   EmailPasswordSignInState({
     this.formType = EmailPasswordSignInFormType.signIn,
