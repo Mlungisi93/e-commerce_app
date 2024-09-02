@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="&#10;Add AsyncValueWidget and use it in the product widgets Finished">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" afterDir="false" />
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="19 Use controller class in EmailPasswordSignInContents">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_controller.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,24 +23,41 @@
       </map>
     </option>
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Mlungisi93/e-commerce_app.git",
-    "accountId": "aee8684e-0413-4f42-a7c8-0d65b8d2c775"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Mlungisi93/e-commerce_app.git&quot;,
+    &quot;accountId&quot;: &quot;aee8684e-0413-4f42-a7c8-0d65b8d2c775&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "section05-finished__mlue"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;section05-finished__mlue&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in" />
+    </key>
+  </component>
   <component name="TaskManager">
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&#10;Add AsyncValueWidget and use it in the product widgets Finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="&#10;Add AsyncValueWidget and use it in the product widgets Finished" />
+    <MESSAGE value="19 Use controller class in EmailPasswordSignInContents" />
+    <option name="LAST_COMMIT_MESSAGE" value="19 Use controller class in EmailPasswordSignInContents" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart</url>
+          <line>37</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
