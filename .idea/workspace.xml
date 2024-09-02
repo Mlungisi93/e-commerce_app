@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="19 Use controller class in EmailPasswordSignInContents">
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="18 Add EmailPasswordSignInController">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/ecommerce_app/lib/src/features/authentication/preseemail_password_sign_in_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/sign_in/email_password_sign_in_screen.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,22 +43,21 @@
     </key>
   </component>
   <component name="TaskManager">
+    <task id="LOCAL-00001" summary="18 Add EmailPasswordSignInController">
+      <option name="closed" value="true" />
+      <created>1725256515078</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725256515078</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="&#10;Add AsyncValueWidget and use it in the product widgets Finished" />
     <MESSAGE value="19 Use controller class in EmailPasswordSignInContents" />
-    <option name="LAST_COMMIT_MESSAGE" value="19 Use controller class in EmailPasswordSignInContents" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/data/fake_auth_repository.dart</url>
-          <line>37</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="18 Add EmailPasswordSignInController" />
+    <option name="LAST_COMMIT_MESSAGE" value="18 Add EmailPasswordSignInController" />
   </component>
 </project>

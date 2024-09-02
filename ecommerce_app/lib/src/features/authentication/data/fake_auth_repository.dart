@@ -2,34 +2,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../utils/in_memory_store.dart';
 import '../domain/app_user.dart';
-//Creating repositories using abstract classes (optional)
-// If desired, we can define a base abstract class for our AuthRepository:
-//
-// abstract class AuthRepository {
-//   Stream<AppUser?> authStateChanges();
-//   AppUser? get currentUser;
-//   Future<void> signInWithEmailAndPassword(String email, String password);
-//   Future<void> createUserWithEmailAndPassword(String email, String password);
-//   Future<void> signOut();
-// }
-//Creating repositories using abstract classes (optional)
-// If desired, we can define a base abstract class for our AuthRepository:
-//
-// abstract class AuthRepository {
-//   Stream<AppUser?> authStateChanges();
-//   AppUser? get currentUser;
-//   Future<void> signInWithEmailAndPassword(String email, String password);
-//   Future<void> createUserWithEmailAndPassword(String email, String password);
-//   Future<void> signOut();
-// }
-///And we can modify our provider to choose which repository to return based on some environment variable:
-//
-// final authRepositoryProvider = Provider<AuthRepository>((ref) {
-//   // Run with this command:
-//   // flutter run --dart-define=useFakeRepos=true/false
-//   final isFake = String.fromEnvironment('useFakeRepos') == 'true';
-//   return isFake ? FakeAuthRepository() : FirebaseAuthRepository();
-// });
 
 /// {@template fake_auth_repository}
 /// A fake implementation of [AuthRepository] for testing and development.
@@ -58,7 +30,8 @@ class FakeAuthRepository {
   /// TODO: Implement actual sign-in logic.
   /// {@endtemplate}
   Future<void> signInWithEmailAndPassword(String email, String password) async {
-    // TODO: Implement
+    await Future.delayed(const Duration(seconds: 3));
+    throw Exception('Connection failed');
     if (currentUser == null) {
       _createNewUser(email);
     }
@@ -71,6 +44,8 @@ class FakeAuthRepository {
   /// {@endtemplate}
   Future<void> createUserWithEmailAndPassword(
       String email, String password) async {
+    await Future.delayed(const Duration(seconds: 3));
+    throw Exception('Connection failed');
     if (currentUser == null) {
       _createNewUser(email);
     }
@@ -82,8 +57,8 @@ class FakeAuthRepository {
   /// TODO: Implement actual sign-out logic.
   /// {@endtemplate}
   Future<void> signOut() async {
-    // await Future.delayed(const Duration(seconds: 3));
-    // throw Exception('Connection failed');
+    await Future.delayed(const Duration(seconds: 3));
+    throw Exception('Connection failed');
     _authState.value = null;
   }
 
@@ -118,3 +93,31 @@ final authStateChangesProvider = StreamProvider.autoDispose<AppUser?>((ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return authRepository.authStateChanges();
 });
+//Creating repositories using abstract classes (optional)
+// If desired, we can define a base abstract class for our AuthRepository:
+//
+// abstract class AuthRepository {
+//   Stream<AppUser?> authStateChanges();
+//   AppUser? get currentUser;
+//   Future<void> signInWithEmailAndPassword(String email, String password);
+//   Future<void> createUserWithEmailAndPassword(String email, String password);
+//   Future<void> signOut();
+// }
+//Creating repositories using abstract classes (optional)
+// If desired, we can define a base abstract class for our AuthRepository:
+//
+// abstract class AuthRepository {
+//   Stream<AppUser?> authStateChanges();
+//   AppUser? get currentUser;
+//   Future<void> signInWithEmailAndPassword(String email, String password);
+//   Future<void> createUserWithEmailAndPassword(String email, String password);
+//   Future<void> signOut();
+// }
+///And we can modify our provider to choose which repository to return based on some environment variable:
+//
+// final authRepositoryProvider = Provider<AuthRepository>((ref) {
+//   // Run with this command:
+//   // flutter run --dart-define=useFakeRepos=true/false
+//   final isFake = String.fromEnvironment('useFakeRepos') == 'true';
+//   return isFake ? FakeAuthRepository() : FirebaseAuthRepository();
+// });
