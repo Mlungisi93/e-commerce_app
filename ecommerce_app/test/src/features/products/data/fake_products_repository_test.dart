@@ -15,19 +15,11 @@ void main() {
     );
   });
 
-  // test('getProduct(100) returns null', () {
-  //   final productsRepository = FakeProductsRepository();
-  //   expect(
-  //     productsRepository.getProduct('100'),
-  //     null,
-  //   );
-  // });// fix is below as this throws an exception
-
   test('getProduct(100) returns null', () {
     final productsRepository = FakeProductsRepository();
     expect(
-      () => productsRepository.getProduct('100'),
-      throwsStateError,
+      productsRepository.getProduct('100'),
+      null,
     );
   });
 }
