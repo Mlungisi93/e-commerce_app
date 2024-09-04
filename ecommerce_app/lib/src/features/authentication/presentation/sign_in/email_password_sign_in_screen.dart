@@ -29,7 +29,6 @@ class EmailPasswordSignInScreen extends StatelessWidget {
       appBar: AppBar(title: Text('Sign In'.hardcoded)),
       body: EmailPasswordSignInContents(
         formType: formType,
-        onSignedIn: () => context.pop(),
       ),
     );
   }
@@ -117,9 +116,15 @@ class _EmailPasswordSignInContentsState
 
   @override
   Widget build(BuildContext context) {
-    ref.listen<EmailPasswordSignInState>(
-      emailPasswordSignInControllerProvider(widget.formType),
-      (_, state) => state.value.showAlertDialogOnError(context),
+    ref.listen< //EmailPasswordSignInState
+        AsyncValue>(
+      emailPasswordSignInControllerProvider(widget.formType)
+          //filter state update so that we only listen to changes to the a-sync value it self but not to the form type
+          // .select is the method that is used to partially listen to the provider and it gives us a function with the state argument that can be to specify which property in our state class we want to listen to
+          // we only care about value changes: change
+          .select((state) => state
+              .value), //this is saying we  want our listener to never be called when the form type changes but then we get that The return type 'AsyncValue<void>' isn't a 'EmailPasswordSignInState', as required by the closure's context -solution
+      (_, state) => state.showAlertDialogOnError(context),
     );
     final state =
         ref.watch(emailPasswordSignInControllerProvider(widget.formType));

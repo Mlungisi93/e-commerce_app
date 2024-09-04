@@ -8,7 +8,6 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-
 import '../../data/fake_auth_repository.dart';
 import 'account_screen_controller.dart';
 
@@ -20,7 +19,8 @@ class AccountScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen<AsyncValue>(
       accountScreenControllerProvider,
-          (_, state) => state.showAlertDialogOnError(context), //listen to error and show in a dialog boc in few lines of code
+      (_, state) => state.showAlertDialogOnError(
+          context), //listen to error and show in a dialog boc in few lines of code
     );
     final state = ref.watch(accountScreenControllerProvider);
     return Scaffold(
@@ -34,27 +34,33 @@ class AccountScreen extends ConsumerWidget {
             onPressed: state.isLoading
                 ? null
                 : () async {
-              // * Get the navigator beforehand to prevent this warning:
-              // * Don't use 'BuildContext's across async gaps.
-              // * More info here: https://youtu.be/bzWaMpD1LHY
-              final goRouter = GoRouter.of(context);
-              final logout = await showAlertDialog(
-                context: context,
-                title: 'Are you sure?'.hardcoded,
-                cancelActionText: 'Cancel'.hardcoded,
-                defaultActionText: 'Logout'.hardcoded,
-              );
-              if (logout == true) {
-                /// separating between UI and business Logic this code await ref.read(authRepositoryProvider).signOut();
-                // Implemented only pop on success
-                final success = await ref
-                    .read(accountScreenControllerProvider.notifier)
-                    .signOut();
-                if (success) {
-                  goRouter.pop();
-                }
-              }
-            },
+                    final logout = await showAlertDialog(
+                      context: context,
+                      title: 'Are you sure?'.hardcoded,
+                      cancelActionText: 'Cancel'.hardcoded,
+                      defaultActionText: 'Logout'.hardcoded,
+                    );
+                    if (logout == true) {
+                      /// separating between UI and business Logic this code await ref.read(authRepositoryProvider).signOut();
+                      // Implemented only pop on success
+                      /*
+                With this code, the redirect logic will be called every time the authentication state changes, and will automatically take care of dismissing the sign-in and account pages after sign-in/sign-out.
+
+This means that this code is no longer needed:
+
+final success = await ref
+                        .read(accountScreenControllerProvider.notifier)
+                        .signOut();
+// no longer needed
+if (success) {
+  Navigator.of(context).pop();
+}
+This is a great advantage as our application scales in complexity, because we now have a centralized place for redirecting routes in response to application state changes.          */
+                      ref
+                          .read(accountScreenControllerProvider.notifier)
+                          .signOut();
+                    }
+                  },
           ),
         ],
       ),

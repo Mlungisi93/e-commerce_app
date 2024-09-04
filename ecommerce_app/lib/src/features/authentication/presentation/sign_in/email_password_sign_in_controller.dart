@@ -27,13 +27,16 @@ class EmailPasswordSignInController
   }
 
   void updateFormType(EmailPasswordSignInFormType formType) {
-    state = state.copyWith(formType: formType);
+    state = state.copyWith(
+        //to fix error dialog from showing when trying to toggle after signing or signup fail
+        //value: AsyncValue.data(null), //another way implemented
+        formType: formType);
   }
 }
 
 final emailPasswordSignInControllerProvider = StateNotifierProvider.autoDispose
     .family<EmailPasswordSignInController, EmailPasswordSignInState,
-    EmailPasswordSignInFormType>((ref, formType) {
+        EmailPasswordSignInFormType>((ref, formType) {
   final authRepository = ref.watch(authRepositoryProvider);
   return EmailPasswordSignInController(
     authRepository: authRepository,
