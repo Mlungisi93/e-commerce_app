@@ -36,5 +36,26 @@ We can stub a mock to decide the response of a mock method. Example: */
       verify(authRepository.signOut).called(1);
       expect(controller.state, const AsyncData<void>(null));
     });
+
+    test('signOut failure', () async {
+      // setup
+      final authRepository = MockAuthRepository();
+      final exception = Exception('Connection failed');
+      when(authRepository.signOut).thenThrow(exception);
+      final controller = AccountScreenController(
+        authRepository: authRepository,
+      );
+      // run
+      await controller.signOut();
+      // verify
+      verify(authRepository.signOut).called(1);
+      expect(controller.state.hasError,
+          true); //verify that only error without Staketrace
+      expect(controller.state, isA<AsyncError>());
+      // expect(controller.state, AsyncError<void>(exception, StackTrace.empty));
+
+      ////this fails because syncValue.guard(() throws both error and Stacktrace(while we were expection stacktrace to be null but actually is not null)
+      //matchers
+    });
   });
 }
