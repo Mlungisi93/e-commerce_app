@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
-      <change afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/authentication/presentation/account/account_screen_controller_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/account/account_screen_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/account/account_screen_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" afterDir="false" />
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="13 Start writing tests for AccountScreenController">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/test/src/features/authentication/presentation/account/account_screen_controller_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/authentication/presentation/account/account_screen_controller_test.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,7 +110,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725629757836</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="13 Start writing tests for AccountScreenController">
+      <option name="closed" value="true" />
+      <created>1725630953954</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725630953954</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -125,6 +131,7 @@
     <MESSAGE value="10 Start implementing tests for the FakeAuthRepository" />
     <MESSAGE value="11 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
     <MESSAGE value="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
-    <option name="LAST_COMMIT_MESSAGE" value="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
+    <MESSAGE value="13 Start writing tests for AccountScreenController" />
+    <option name="LAST_COMMIT_MESSAGE" value="13 Start writing tests for AccountScreenController" />
   </component>
 </project>
