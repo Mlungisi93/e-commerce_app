@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="07 Add remaining tests for Futures and Streams to complete Product repository test except for providers as they do not have business logic">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/authentication/presentation/account/account_screen_controller_test.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/data/fake_products_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/products/data/fake_products_repository.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ecommerce_app/test/src/features/products/data/fake_products_repository_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/products/data/fake_products_repository_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/account/account_screen_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/authentication/presentation/account/account_screen_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +80,39 @@
       <option name="project" value="LOCAL" />
       <updated>1725432606987</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="08 Adding optional delay to the Fake repository 09 How to generate a Flutter test coverage report in VSCode&#10;                                                   We can run flutter test --coverage on the terminal to generate coverage data in coverage/lcov.info.&#10;                                                   &#10;                                                   This can be parsed and used to display test coverage using extensions such as Flutter Coverage and Coverage Gutters.&#10;                                                   &#10;                                                   For a more complete overview, read this:&#10;                                                   &#10;                                                   How to Generate and Analyze a Flutter Test Coverage Report in VSCode">
+      <option name="closed" value="true" />
+      <created>1725516220617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725516220617</updated>
+    </task>
+    <task id="LOCAL-00007" summary="10 Start implementing tests for the FakeAuthRepository">
+      <option name="closed" value="true" />
+      <created>1725600701038</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725600701039</updated>
+    </task>
+    <task id="LOCAL-00008" summary="11 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
+      <option name="closed" value="true" />
+      <created>1725603365451</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725603365451</updated>
+    </task>
+    <task id="LOCAL-00009" summary="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
+      <option name="closed" value="true" />
+      <created>1725629757836</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725629757836</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -89,6 +121,10 @@
     <MESSAGE value="05: Add getProduct teststest('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          productsRepository.getProduct('100'),&#10;          null,&#10;        );&#10;      }); fix &#10;      Test matchers and working with methods that throw exceptions&#10;      The expect method can be used directly to compare values.&#10;      &#10;      But we can also use custom test matchers, such as throwsStateError in this example:&#10;      &#10;      test('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          () =&gt; productsRepository.getProduct('100'),&#10;          throwsStateError,&#10;        );&#10;      });&#10;      Testing functions that throw&#10;      Note that if a function throws, we should wrap it inside a closure, or use a method tear-off when possible, as described here:" />
     <MESSAGE value="06: Implement private _getProduct method + update test&#10;Fixing the getProduct() method and updating the unit tests&#10;Grouping&#10;If we have multiple tests that belong together, we can put them inside a group:&#10;&#10;void main() {&#10;  FakeProductsRepository makeProductsRepository() =&gt; FakeProductsRepository(&#10;        addDelay: false,&#10;      );&#10;  group('FakeProductsRepository', () {&#10;    test('getProductsList returns global list', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProductsList(),&#10;        kTestProducts,&#10;      );&#10;    });&#10; &#10;    test('getProduct(1) returns first item', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('1'),&#10;        kTestProducts[0],&#10;      );&#10;    });&#10; &#10;    test('getProduct(100) returns null', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('100'),&#10;        null,&#10;      );&#10;    });&#10;  });&#10;}&#10;Refactoring with confidence&#10;One great benefit of having tests is that they allow us to refactor with confidence.&#10;&#10;For example, we may have a getProduct method that is implemented like this:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  Product? getProduct(String id) {&#10;    try {&#10;      return _products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }&#10;}&#10;Along with two tests to check its behavior:&#10;&#10;test('getProduct(1) returns first item', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('1'),&#10;    kTestProducts[0],&#10;  );&#10;});&#10; &#10;test('getProduct(100) returns null', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('100'),&#10;    null,&#10;  );&#10;});&#10;These tests give us a safety net, meaning that we can refactor our code and check if they still pass. Example:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  // method under test&#10;  Product? getProduct(String id) {&#10;    return _getProduct(_products, id);&#10;  }&#10;  // private internal method that is also used elsewhere in this class&#10;  static Product? _getProduct(List&lt;Product&gt; products, String id) {&#10;    try {&#10;      return products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }  &#10;}&#10;In this case, we have moved some of the implementation logic into a private method that can be reused inside the class." />
     <MESSAGE value="07 Add remaining tests for Futures and Streams to complete Product repository test except for providers as they do not have business logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="07 Add remaining tests for Futures and Streams to complete Product repository test except for providers as they do not have business logic" />
+    <MESSAGE value="08 Adding optional delay to the Fake repository 09 How to generate a Flutter test coverage report in VSCode&#10;                                                   We can run flutter test --coverage on the terminal to generate coverage data in coverage/lcov.info.&#10;                                                   &#10;                                                   This can be parsed and used to display test coverage using extensions such as Flutter Coverage and Coverage Gutters.&#10;                                                   &#10;                                                   For a more complete overview, read this:&#10;                                                   &#10;                                                   How to Generate and Analyze a Flutter Test Coverage Report in VSCode" />
+    <MESSAGE value="10 Start implementing tests for the FakeAuthRepository" />
+    <MESSAGE value="11 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
+    <MESSAGE value="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
+    <option name="LAST_COMMIT_MESSAGE" value="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
   </component>
 </project>
