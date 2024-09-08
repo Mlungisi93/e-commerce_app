@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates" />
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="17 &#10;Add setUp method in AccountScreenController tests" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +147,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725634940637</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="16 &#10;Update tests to use expectLater + predicates">
+      <option name="closed" value="true" />
+      <created>1725635437542</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725635437542</updated>
+    </task>
+    <task id="LOCAL-00016" summary="17 &#10;Add setUp method in AccountScreenController tests">
+      <option name="closed" value="true" />
+      <created>1725773222646</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725773222646</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -164,6 +180,8 @@
     <MESSAGE value="14 Testing the AccountScreenController (part 2) + working with mocks&#10;When using the mocktail package, we can create mock classes like this:&#10;&#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10;Then, we can pass the MockAuthRepository as an argument directly to the AccountScreenController, because it implements the FakeAuthRepository.&#10;&#10;final authRepository = MockAuthRepository();&#10;final controller = AccountScreenController(&#10;  authRepository: authRepository,&#10;);&#10;By default, mocks implement all methods by returning null.&#10;&#10;Stubbing a mock&#10;We can stub a mock to decide the response of a mock method. Example:&#10;&#10;when(() =&gt; mock.method(args))&#10;  .thenReturn(object) // do this&#10;  .thenAnswer(future/stream) // or this&#10;  .thenThrow(exception) // or this&#10;If this is not what we want, we can stub each individual method. Here are a couple of examples:&#10;&#10;// Answer with a Future that completes immediately&#10;when(authRepository.signOut).thenAnswer(&#10;  (_) =&gt; Future.value(),&#10;);&#10; &#10;// Throw an exception&#10;final exception = Exception('Connection failed');&#10;when(authRepository.signOut).thenThrow(exception);&#10;Verifying a mock&#10;Then, we can verify if the stubbed method was called:&#10;&#10;verifyNever(authRepository.signOut);&#10;verify(authRepository.signOut).called(1);&#10;Here’s the completed code for this lesson:&#10;&#10;import 'package:ecommerce_app/src/features/authentication/presentation/account/account_screen_controller.dart';&#10;import 'package:flutter_riverpod/flutter_riverpod.dart';&#10;import 'package:flutter_test/flutter_test.dart';&#10;import 'package:mocktail/mocktail.dart';&#10; &#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10; &#10;void main() {&#10;  group('AccountScreenController', () {&#10;    test('initial state is AsyncValue.data', () {&#10;      final authRepository = MockAuthRepository();&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      verifyNever(authRepository.signOut);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10; &#10;    test('signOut success', () async {&#10;      // setup&#10;      final authRepository = MockAuthRepository();&#10;      when(authRepository.signOut).thenAnswer(&#10;        (_) =&gt; Future.value(),&#10;      );&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      // run&#10;      await controller.signOut();&#10;      // verify&#10;      verify(authRepository.signOut).called(1);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10;  });&#10;}" />
     <MESSAGE value="15 Testing the AccountScreenController (part 3) + type matchers&#10;   When AsyncValue.guard catches an error, it will include the StackTrace in the AsyncError that is assigned to the StateNotifier’s state.&#10;   &#10;   This means that we can’t compare state with AsyncError directly like this, as the stack trace won’t match:&#10;   &#10;   // this will fail because we can match the exception, but not the stack trace&#10;   expect(controller.state, AsyncError&lt;void&gt;(exception, StackTrace.current));&#10;   Instead, we have these two alternatives:&#10;   &#10;   // just check if the state has an error&#10;   expect(controller.state.hasError, true);&#10;   // or use a type matcher without checking the value&#10;   expect(controller.state, isA&lt;AsyncError&gt;());&#10;   For more info on this matcher, see the documentation:&#10;   &#10;   isA&lt;T&gt; function" />
     <MESSAGE value="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates" />
-    <option name="LAST_COMMIT_MESSAGE" value="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates" />
+    <MESSAGE value="16 &#10;Update tests to use expectLater + predicates" />
+    <MESSAGE value="17 &#10;Add setUp method in AccountScreenController tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="17 &#10;Add setUp method in AccountScreenController tests" />
   </component>
 </project>
