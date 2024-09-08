@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="17 &#10;Add setUp method in AccountScreenController tests" />
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="20 setting custom test timeouts per-file">
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/.github/workflows/test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/test/src/mocks.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +166,31 @@
       <option name="project" value="LOCAL" />
       <updated>1725773222646</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="18 Testing the EmailPasswordSignInController with acceptance criteria">
+      <option name="closed" value="true" />
+      <created>1725775303071</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725775303071</updated>
+    </task>
+    <task id="LOCAL-00018" summary="19 Testing the EmailPasswordSignInController (part 2)">
+      <option name="closed" value="true" />
+      <created>1725778917270</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725778917270</updated>
+    </task>
+    <task id="LOCAL-00019" summary="20 setting custom test timeouts per-file">
+      <option name="closed" value="true" />
+      <created>1725785127654</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1725785127654</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -182,6 +209,9 @@
     <MESSAGE value="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates" />
     <MESSAGE value="16 &#10;Update tests to use expectLater + predicates" />
     <MESSAGE value="17 &#10;Add setUp method in AccountScreenController tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="17 &#10;Add setUp method in AccountScreenController tests" />
+    <MESSAGE value="18 Testing the EmailPasswordSignInController with acceptance criteria" />
+    <MESSAGE value="19 Testing the EmailPasswordSignInController (part 2)" />
+    <MESSAGE value="20 setting custom test timeouts per-file" />
+    <option name="LAST_COMMIT_MESSAGE" value="20 setting custom test timeouts per-file" />
   </component>
 </project>
