@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('Cancel Logout', (tester) async {
-    // pump to trigger new frame
+    // pump to trigger new frame and UI will only update after we triggered this
     await tester.pumpWidget(const ProviderScope(
       child: MaterialApp(
         home: AccountScreen(),
