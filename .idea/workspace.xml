@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d6cbe158-3b9f-4272-85f5-7e71c61681e9" name="Changes" comment="21 Add tests.yaml workflow">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/.github/workflows/test.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/authentication/presentation/account/account_screen_test.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="section06-finished_mlue" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Mlungisi93/e-commerce_app.git",
+    "accountId": "aee8684e-0413-4f42-a7c8-0d65b8d2c775"
+  }
+}]]></component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "section07-starter"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Section 6 Starter project">
+      <option name="closed" value="true" />
+      <created>1725425741581</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1725425741581</updated>
+    </task>
+    <task id="LOCAL-00002" summary="06: Add first test + product equality methods">
+      <option name="closed" value="true" />
+      <created>1725427290148</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1725427290148</updated>
+    </task>
+    <task id="LOCAL-00003" summary="05: Add getProduct teststest('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          productsRepository.getProduct('100'),&#10;          null,&#10;        );&#10;      }); fix &#10;      Test matchers and working with methods that throw exceptions&#10;      The expect method can be used directly to compare values.&#10;      &#10;      But we can also use custom test matchers, such as throwsStateError in this example:&#10;      &#10;      test('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          () =&gt; productsRepository.getProduct('100'),&#10;          throwsStateError,&#10;        );&#10;      });&#10;      Testing functions that throw&#10;      Note that if a function throws, we should wrap it inside a closure, or use a method tear-off when possible, as described here:">
+      <option name="closed" value="true" />
+      <created>1725429268871</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725429268871</updated>
+    </task>
+    <task id="LOCAL-00004" summary="06: Implement private _getProduct method + update test&#10;Fixing the getProduct() method and updating the unit tests&#10;Grouping&#10;If we have multiple tests that belong together, we can put them inside a group:&#10;&#10;void main() {&#10;  FakeProductsRepository makeProductsRepository() =&gt; FakeProductsRepository(&#10;        addDelay: false,&#10;      );&#10;  group('FakeProductsRepository', () {&#10;    test('getProductsList returns global list', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProductsList(),&#10;        kTestProducts,&#10;      );&#10;    });&#10; &#10;    test('getProduct(1) returns first item', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('1'),&#10;        kTestProducts[0],&#10;      );&#10;    });&#10; &#10;    test('getProduct(100) returns null', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('100'),&#10;        null,&#10;      );&#10;    });&#10;  });&#10;}&#10;Refactoring with confidence&#10;One great benefit of having tests is that they allow us to refactor with confidence.&#10;&#10;For example, we may have a getProduct method that is implemented like this:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  Product? getProduct(String id) {&#10;    try {&#10;      return _products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }&#10;}&#10;Along with two tests to check its behavior:&#10;&#10;test('getProduct(1) returns first item', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('1'),&#10;    kTestProducts[0],&#10;  );&#10;});&#10; &#10;test('getProduct(100) returns null', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('100'),&#10;    null,&#10;  );&#10;});&#10;These tests give us a safety net, meaning that we can refactor our code and check if they still pass. Example:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  // method under test&#10;  Product? getProduct(String id) {&#10;    return _getProduct(_products, id);&#10;  }&#10;  // private internal method that is also used elsewhere in this class&#10;  static Product? _getProduct(List&lt;Product&gt; products, String id) {&#10;    try {&#10;      return products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }  &#10;}&#10;In this case, we have moved some of the implementation logic into a private method that can be reused inside the class.">
+      <option name="closed" value="true" />
+      <created>1725430864284</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725430864284</updated>
+    </task>
+    <task id="LOCAL-00005" summary="07 Add remaining tests for Futures and Streams to complete Product repository test except for providers as they do not have business logic">
+      <option name="closed" value="true" />
+      <created>1725432606987</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1725432606987</updated>
+    </task>
+    <task id="LOCAL-00006" summary="08 Adding optional delay to the Fake repository 09 How to generate a Flutter test coverage report in VSCode&#10;                                                   We can run flutter test --coverage on the terminal to generate coverage data in coverage/lcov.info.&#10;                                                   &#10;                                                   This can be parsed and used to display test coverage using extensions such as Flutter Coverage and Coverage Gutters.&#10;                                                   &#10;                                                   For a more complete overview, read this:&#10;                                                   &#10;                                                   How to Generate and Analyze a Flutter Test Coverage Report in VSCode">
+      <option name="closed" value="true" />
+      <created>1725516220617</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1725516220617</updated>
+    </task>
+    <task id="LOCAL-00007" summary="10 Start implementing tests for the FakeAuthRepository">
+      <option name="closed" value="true" />
+      <created>1725600701038</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1725600701039</updated>
+    </task>
+    <task id="LOCAL-00008" summary="11 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
+      <option name="closed" value="true" />
+      <created>1725603365451</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1725603365451</updated>
+    </task>
+    <task id="LOCAL-00009" summary="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers">
+      <option name="closed" value="true" />
+      <created>1725629757836</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1725629757836</updated>
+    </task>
+    <task id="LOCAL-00010" summary="13 Start writing tests for AccountScreenController">
+      <option name="closed" value="true" />
+      <created>1725630953954</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1725630953954</updated>
+    </task>
+    <task id="LOCAL-00011" summary="14 Testing the AccountScreenController (part 2) + working with mocks&#10;When using the mocktail package, we can create mock classes like this:&#10;&#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10;Then, we can pass the MockAuthRepository as an argument directly to the AccountScreenController, because it implements the FakeAuthRepository.&#10;&#10;final authRepository = MockAuthRepository();&#10;final controller = AccountScreenController(&#10;  authRepository: authRepository,&#10;);&#10;By default, mocks implement all methods by returning null.&#10;&#10;Stubbing a mock&#10;We can stub a mock to decide the response of a mock method. Example:&#10;&#10;when(() =&gt; mock.method(args))&#10;  .thenReturn(object) // do this&#10;  .thenAnswer(future/stream) // or this&#10;  .thenThrow(exception) // or this&#10;If this is not what we want, we can stub each individual method. Here are a couple of examples:&#10;&#10;// Answer with a Future that completes immediately&#10;when(authRepository.signOut).thenAnswer(&#10;  (_) =&gt; Future.value(),&#10;);&#10; &#10;// Throw an exception&#10;final exception = Exception('Connection failed');&#10;when(authRepository.signOut).thenThrow(exception);&#10;Verifying a mock&#10;Then, we can verify if the stubbed method was called:&#10;&#10;verifyNever(authRepository.signOut);&#10;verify(authRepository.signOut).called(1);&#10;Here’s the completed code for this lesson:&#10;&#10;import 'package:ecommerce_app/src/features/authentication/presentation/account/account_screen_controller.dart';&#10;import 'package:flutter_riverpod/flutter_riverpod.dart';&#10;import 'package:flutter_test/flutter_test.dart';&#10;import 'package:mocktail/mocktail.dart';&#10; &#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10; &#10;void main() {&#10;  group('AccountScreenController', () {&#10;    test('initial state is AsyncValue.data', () {&#10;      final authRepository = MockAuthRepository();&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      verifyNever(authRepository.signOut);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10; &#10;    test('signOut success', () async {&#10;      // setup&#10;      final authRepository = MockAuthRepository();&#10;      when(authRepository.signOut).thenAnswer(&#10;        (_) =&gt; Future.value(),&#10;      );&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      // run&#10;      await controller.signOut();&#10;      // verify&#10;      verify(authRepository.signOut).called(1);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10;  });&#10;}">
+      <option name="closed" value="true" />
+      <created>1725632464488</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1725632464488</updated>
+    </task>
+    <task id="LOCAL-00012" summary="14 Testing the AccountScreenController (part 2) + working with mocks&#10;When using the mocktail package, we can create mock classes like this:&#10;&#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10;Then, we can pass the MockAuthRepository as an argument directly to the AccountScreenController, because it implements the FakeAuthRepository.&#10;&#10;final authRepository = MockAuthRepository();&#10;final controller = AccountScreenController(&#10;  authRepository: authRepository,&#10;);&#10;By default, mocks implement all methods by returning null.&#10;&#10;Stubbing a mock&#10;We can stub a mock to decide the response of a mock method. Example:&#10;&#10;when(() =&gt; mock.method(args))&#10;  .thenReturn(object) // do this&#10;  .thenAnswer(future/stream) // or this&#10;  .thenThrow(exception) // or this&#10;If this is not what we want, we can stub each individual method. Here are a couple of examples:&#10;&#10;// Answer with a Future that completes immediately&#10;when(authRepository.signOut).thenAnswer(&#10;  (_) =&gt; Future.value(),&#10;);&#10; &#10;// Throw an exception&#10;final exception = Exception('Connection failed');&#10;when(authRepository.signOut).thenThrow(exception);&#10;Verifying a mock&#10;Then, we can verify if the stubbed method was called:&#10;&#10;verifyNever(authRepository.signOut);&#10;verify(authRepository.signOut).called(1);&#10;Here’s the completed code for this lesson:&#10;&#10;import 'package:ecommerce_app/src/features/authentication/presentation/account/account_screen_controller.dart';&#10;import 'package:flutter_riverpod/flutter_riverpod.dart';&#10;import 'package:flutter_test/flutter_test.dart';&#10;import 'package:mocktail/mocktail.dart';&#10; &#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10; &#10;void main() {&#10;  group('AccountScreenController', () {&#10;    test('initial state is AsyncValue.data', () {&#10;      final authRepository = MockAuthRepository();&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      verifyNever(authRepository.signOut);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10; &#10;    test('signOut success', () async {&#10;      // setup&#10;      final authRepository = MockAuthRepository();&#10;      when(authRepository.signOut).thenAnswer(&#10;        (_) =&gt; Future.value(),&#10;      );&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      // run&#10;      await controller.signOut();&#10;      // verify&#10;      verify(authRepository.signOut).called(1);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10;  });&#10;}">
+      <option name="closed" value="true" />
+      <created>1725632497188</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1725632497188</updated>
+    </task>
+    <task id="LOCAL-00013" summary="15 Testing the AccountScreenController (part 3) + type matchers&#10;   When AsyncValue.guard catches an error, it will include the StackTrace in the AsyncError that is assigned to the StateNotifier’s state.&#10;   &#10;   This means that we can’t compare state with AsyncError directly like this, as the stack trace won’t match:&#10;   &#10;   // this will fail because we can match the exception, but not the stack trace&#10;   expect(controller.state, AsyncError&lt;void&gt;(exception, StackTrace.current));&#10;   Instead, we have these two alternatives:&#10;   &#10;   // just check if the state has an error&#10;   expect(controller.state.hasError, true);&#10;   // or use a type matcher without checking the value&#10;   expect(controller.state, isA&lt;AsyncError&gt;());&#10;   For more info on this matcher, see the documentation:&#10;   &#10;   isA&lt;T&gt; function">
+      <option name="closed" value="true" />
+      <created>1725634107650</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1725634107650</updated>
+    </task>
+    <task id="LOCAL-00014" summary="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates">
+      <option name="closed" value="true" />
+      <created>1725634940637</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1725634940637</updated>
+    </task>
+    <task id="LOCAL-00015" summary="16 &#10;Update tests to use expectLater + predicates">
+      <option name="closed" value="true" />
+      <created>1725635437542</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1725635437542</updated>
+    </task>
+    <task id="LOCAL-00016" summary="17 &#10;Add setUp method in AccountScreenController tests">
+      <option name="closed" value="true" />
+      <created>1725773222646</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1725773222646</updated>
+    </task>
+    <task id="LOCAL-00017" summary="18 Testing the EmailPasswordSignInController with acceptance criteria">
+      <option name="closed" value="true" />
+      <created>1725775303071</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1725775303071</updated>
+    </task>
+    <task id="LOCAL-00018" summary="19 Testing the EmailPasswordSignInController (part 2)">
+      <option name="closed" value="true" />
+      <created>1725778917270</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1725778917270</updated>
+    </task>
+    <task id="LOCAL-00019" summary="20 setting custom test timeouts per-file">
+      <option name="closed" value="true" />
+      <created>1725785127654</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1725785127654</updated>
+    </task>
+    <task id="LOCAL-00020" summary="21 Add tests.yaml workflow">
+      <option name="closed" value="true" />
+      <created>1725785866263</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1725785866263</updated>
+    </task>
+    <task id="LOCAL-00021" summary="21 Add tests.yaml workflow">
+      <option name="closed" value="true" />
+      <created>1725785872535</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1725785872535</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Section 6 Starter project" />
+    <MESSAGE value="06: Add first test + product equality methods" />
+    <MESSAGE value="05: Add getProduct teststest('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          productsRepository.getProduct('100'),&#10;          null,&#10;        );&#10;      }); fix &#10;      Test matchers and working with methods that throw exceptions&#10;      The expect method can be used directly to compare values.&#10;      &#10;      But we can also use custom test matchers, such as throwsStateError in this example:&#10;      &#10;      test('getProduct(100) returns null', () {&#10;        final productsRepository = FakeProductsRepository();&#10;        expect(&#10;          () =&gt; productsRepository.getProduct('100'),&#10;          throwsStateError,&#10;        );&#10;      });&#10;      Testing functions that throw&#10;      Note that if a function throws, we should wrap it inside a closure, or use a method tear-off when possible, as described here:" />
+    <MESSAGE value="06: Implement private _getProduct method + update test&#10;Fixing the getProduct() method and updating the unit tests&#10;Grouping&#10;If we have multiple tests that belong together, we can put them inside a group:&#10;&#10;void main() {&#10;  FakeProductsRepository makeProductsRepository() =&gt; FakeProductsRepository(&#10;        addDelay: false,&#10;      );&#10;  group('FakeProductsRepository', () {&#10;    test('getProductsList returns global list', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProductsList(),&#10;        kTestProducts,&#10;      );&#10;    });&#10; &#10;    test('getProduct(1) returns first item', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('1'),&#10;        kTestProducts[0],&#10;      );&#10;    });&#10; &#10;    test('getProduct(100) returns null', () {&#10;      final productsRepository = makeProductsRepository();&#10;      expect(&#10;        productsRepository.getProduct('100'),&#10;        null,&#10;      );&#10;    });&#10;  });&#10;}&#10;Refactoring with confidence&#10;One great benefit of having tests is that they allow us to refactor with confidence.&#10;&#10;For example, we may have a getProduct method that is implemented like this:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  Product? getProduct(String id) {&#10;    try {&#10;      return _products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }&#10;}&#10;Along with two tests to check its behavior:&#10;&#10;test('getProduct(1) returns first item', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('1'),&#10;    kTestProducts[0],&#10;  );&#10;});&#10; &#10;test('getProduct(100) returns null', () {&#10;  final productsRepository = makeProductsRepository();&#10;  expect(&#10;    productsRepository.getProduct('100'),&#10;    null,&#10;  );&#10;});&#10;These tests give us a safety net, meaning that we can refactor our code and check if they still pass. Example:&#10;&#10;class FakeProductsRepository {&#10;  final List&lt;Product&gt; _products = kTestProducts;&#10; &#10;  // method under test&#10;  Product? getProduct(String id) {&#10;    return _getProduct(_products, id);&#10;  }&#10;  // private internal method that is also used elsewhere in this class&#10;  static Product? _getProduct(List&lt;Product&gt; products, String id) {&#10;    try {&#10;      return products.firstWhere((product) =&gt; product.id == id);&#10;    } catch (e) {&#10;      return null;&#10;    }&#10;  }  &#10;}&#10;In this case, we have moved some of the implementation logic into a private method that can be reused inside the class." />
+    <MESSAGE value="07 Add remaining tests for Futures and Streams to complete Product repository test except for providers as they do not have business logic" />
+    <MESSAGE value="08 Adding optional delay to the Fake repository 09 How to generate a Flutter test coverage report in VSCode&#10;                                                   We can run flutter test --coverage on the terminal to generate coverage data in coverage/lcov.info.&#10;                                                   &#10;                                                   This can be parsed and used to display test coverage using extensions such as Flutter Coverage and Coverage Gutters.&#10;                                                   &#10;                                                   For a more complete overview, read this:&#10;                                                   &#10;                                                   How to Generate and Analyze a Flutter Test Coverage Report in VSCode" />
+    <MESSAGE value="10 Start implementing tests for the FakeAuthRepository" />
+    <MESSAGE value="11 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
+    <MESSAGE value="12 Testing the FakeAuthRepository (part 2) + advanced stream matchers" />
+    <MESSAGE value="13 Start writing tests for AccountScreenController" />
+    <MESSAGE value="14 Testing the AccountScreenController (part 2) + working with mocks&#10;When using the mocktail package, we can create mock classes like this:&#10;&#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10;Then, we can pass the MockAuthRepository as an argument directly to the AccountScreenController, because it implements the FakeAuthRepository.&#10;&#10;final authRepository = MockAuthRepository();&#10;final controller = AccountScreenController(&#10;  authRepository: authRepository,&#10;);&#10;By default, mocks implement all methods by returning null.&#10;&#10;Stubbing a mock&#10;We can stub a mock to decide the response of a mock method. Example:&#10;&#10;when(() =&gt; mock.method(args))&#10;  .thenReturn(object) // do this&#10;  .thenAnswer(future/stream) // or this&#10;  .thenThrow(exception) // or this&#10;If this is not what we want, we can stub each individual method. Here are a couple of examples:&#10;&#10;// Answer with a Future that completes immediately&#10;when(authRepository.signOut).thenAnswer(&#10;  (_) =&gt; Future.value(),&#10;);&#10; &#10;// Throw an exception&#10;final exception = Exception('Connection failed');&#10;when(authRepository.signOut).thenThrow(exception);&#10;Verifying a mock&#10;Then, we can verify if the stubbed method was called:&#10;&#10;verifyNever(authRepository.signOut);&#10;verify(authRepository.signOut).called(1);&#10;Here’s the completed code for this lesson:&#10;&#10;import 'package:ecommerce_app/src/features/authentication/presentation/account/account_screen_controller.dart';&#10;import 'package:flutter_riverpod/flutter_riverpod.dart';&#10;import 'package:flutter_test/flutter_test.dart';&#10;import 'package:mocktail/mocktail.dart';&#10; &#10;class MockAuthRepository extends Mock implements FakeAuthRepository {}&#10; &#10;void main() {&#10;  group('AccountScreenController', () {&#10;    test('initial state is AsyncValue.data', () {&#10;      final authRepository = MockAuthRepository();&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      verifyNever(authRepository.signOut);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10; &#10;    test('signOut success', () async {&#10;      // setup&#10;      final authRepository = MockAuthRepository();&#10;      when(authRepository.signOut).thenAnswer(&#10;        (_) =&gt; Future.value(),&#10;      );&#10;      final controller = AccountScreenController(&#10;        authRepository: authRepository,&#10;      );&#10;      // run&#10;      await controller.signOut();&#10;      // verify&#10;      verify(authRepository.signOut).called(1);&#10;      expect(controller.state, const AsyncData&lt;void&gt;(null));&#10;    });&#10;  });&#10;}" />
+    <MESSAGE value="15 Testing the AccountScreenController (part 3) + type matchers&#10;   When AsyncValue.guard catches an error, it will include the StackTrace in the AsyncError that is assigned to the StateNotifier’s state.&#10;   &#10;   This means that we can’t compare state with AsyncError directly like this, as the stack trace won’t match:&#10;   &#10;   // this will fail because we can match the exception, but not the stack trace&#10;   expect(controller.state, AsyncError&lt;void&gt;(exception, StackTrace.current));&#10;   Instead, we have these two alternatives:&#10;   &#10;   // just check if the state has an error&#10;   expect(controller.state.hasError, true);&#10;   // or use a type matcher without checking the value&#10;   expect(controller.state, isA&lt;AsyncError&gt;());&#10;   For more info on this matcher, see the documentation:&#10;   &#10;   isA&lt;T&gt; function" />
+    <MESSAGE value="16 we want to test the state changes over time solution- Testing with Stream Matchers and Predicates" />
+    <MESSAGE value="16 &#10;Update tests to use expectLater + predicates" />
+    <MESSAGE value="17 &#10;Add setUp method in AccountScreenController tests" />
+    <MESSAGE value="18 Testing the EmailPasswordSignInController with acceptance criteria" />
+    <MESSAGE value="19 Testing the EmailPasswordSignInController (part 2)" />
+    <MESSAGE value="20 setting custom test timeouts per-file" />
+    <MESSAGE value="21 Add tests.yaml workflow" />
+    <option name="LAST_COMMIT_MESSAGE" value="21 Add tests.yaml workflow" />
+  </component>
+</project>
