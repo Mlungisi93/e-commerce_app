@@ -17,7 +17,7 @@ void main() {
     await r.pumpAccountScreen();
     await r.tapLogoutButton();
     r.expectLogoutDialogFound();
-    await r.tapDialogLogoutButton();
+    await r.tapDialogLogoutButton(); //now able to find one button
     r.expectLogoutDialogNotFound();
   });
 }
