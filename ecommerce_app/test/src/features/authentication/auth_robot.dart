@@ -66,6 +66,11 @@ class AuthRobot {
     expect(dialogTitle, findsOneWidget);
   }
 
+  void expectPasswordTooShortFound() {
+    final dialogTitle = find.text('Password is too short');
+    expect(dialogTitle, findsOneWidget);
+  }
+
   void expectCreateAccountButtonNotFound() {
     final dialogTitle = find.text('Create an account');
     expect(dialogTitle, findsNothing);

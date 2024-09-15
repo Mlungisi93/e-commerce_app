@@ -103,6 +103,7 @@ void main() {
             any(),
             any(),
           ));
+      r.expectPasswordTooShortFound();
     });
     testWidgets('''
         Given formType is register
