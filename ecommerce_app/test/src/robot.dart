@@ -8,13 +8,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'features/authentication/auth_robot.dart';
+import 'goldens/golden_robot.dart';
 
 class Robot {
-  Robot(this.tester) : auth = AuthRobot(tester); //, count = 0;
+  Robot(this.tester)
+      : auth = AuthRobot(tester),
+        golden = GoldenRobot(tester); //, count = 0;
 
   ///constructor initialiser list
   final WidgetTester tester;
   final AuthRobot auth;
+  final GoldenRobot golden;
   //final int count;
 
   Future<void> pumpMyApp() async {
