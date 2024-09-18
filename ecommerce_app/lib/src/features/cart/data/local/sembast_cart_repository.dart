@@ -43,7 +43,7 @@ class SembastCartRepository implements LocalCartRepository {
 
   @override
   Stream<Cart> watchCart() {
-    //by using snapshots we get a new stream value everytime the cart is updated
+    //by using snapshots we get a new stream value every time the cart is updated
     final record = store.record(cartItemsKey);
     return record.onSnapshot(db).map((snapshot) {
       if (snapshot != null) {
