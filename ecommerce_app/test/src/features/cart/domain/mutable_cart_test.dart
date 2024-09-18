@@ -16,7 +16,7 @@ void main() {
           .setItem(const Item(productId: '1', quantity: 2));
       expect(cart.items, {'1': 2});
     });
-    test('cart with different item - set item with quantity', () {
+    test('cart with different items - set items with quantity', () {
       final cart = const Cart()
           .addItem(const Item(productId: '2', quantity: 1))
           .setItem(const Item(productId: '1', quantity: 2));
@@ -61,7 +61,7 @@ void main() {
         '2': 1,
       });
     });
-    test('cart with one item - add two items of which one matching', () {
+    test('cart with one item - add two items of which one is matching', () {
       final cart = const Cart()
           .addItem(const Item(productId: '1', quantity: 1))
           .addItems([
