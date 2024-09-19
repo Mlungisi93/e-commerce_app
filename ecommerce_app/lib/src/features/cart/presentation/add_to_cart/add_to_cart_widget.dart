@@ -20,14 +20,15 @@ class AddToCartWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    // ref.listen<AsyncValue<int>>(
-    //   addToCartControllerProvider,
-    //   (_, state) => state.showAlertDialogOnError(context),
-    // );
+    ref.listen<AsyncValue>(
+      addToCartControllerProvider,
+      (_, state) => state.showAlertDialogOnError(context),
+    );
 
     final availableQuantity = product.availableQuantity;
     final state = ref.watch(addToCartControllerProvider);
-    debugPrint(state.toString());
+    final quantity = ref.watch(itemQuantityControllerProvider);
+    debugPrint(quantity.toString());
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -38,7 +39,7 @@ class AddToCartWidget extends ConsumerWidget {
             Text('Quantity:'.hardcoded),
             ItemQuantitySelector(
               // TODO: plug in state
-              quantity: state.value!,
+              quantity: quantity,
               // let the user choose up to the available quantity or
               // 10 items at most
               maxQuantity: min(availableQuantity, 10),
@@ -46,7 +47,7 @@ class AddToCartWidget extends ConsumerWidget {
               onChanged: state.isLoading
                   ? null
                   : (quantity) => ref
-                      .read(addToCartControllerProvider.notifier)
+                      .read(itemQuantityControllerProvider.notifier)
                       .updateQuantity(quantity),
             ),
           ],
