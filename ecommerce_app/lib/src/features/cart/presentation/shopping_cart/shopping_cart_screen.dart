@@ -23,6 +23,7 @@ class ShoppingCartScreen extends ConsumerWidget {
     // Done : error handling
     ref.listen<AsyncValue<void>>(
       shoppingCartScreenControllerProvider,
+      // _ is the previous state and @state - is the current state
       (_, state) => state.showAlertDialogOnError(context),
     );
     final state = ref.watch(shoppingCartScreenControllerProvider);

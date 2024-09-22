@@ -10,7 +10,8 @@ class ShoppingCartScreenController extends StateNotifier<AsyncValue<void>> {
   Future<void> updateItemQuantity(ProductID productId, int quantity) async {
     state = const AsyncLoading();
     final updated = Item(productId: productId, quantity: quantity);
-    state = await AsyncValue.guard(() => cartService.setItem(updated));
+    state = await AsyncValue.guard(() => cartService.setItem(
+        updated)); // this updates by overidding with new quantity on screen
   }
 
   Future<void> removeItemById(ProductID productId) async {
@@ -20,6 +21,7 @@ class ShoppingCartScreenController extends StateNotifier<AsyncValue<void>> {
 }
 
 final shoppingCartScreenControllerProvider =
+//passing AsyncValue<void> as a state
     StateNotifierProvider<ShoppingCartScreenController, AsyncValue<void>>(
         (ref) {
   return ShoppingCartScreenController(
