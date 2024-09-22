@@ -4,6 +4,7 @@ import 'package:ecommerce_app/src/features/cart/data/remote/remote_cart_reposito
 import 'package:ecommerce_app/src/features/cart/domain/cart.dart';
 import 'package:ecommerce_app/src/features/cart/domain/item.dart';
 import 'package:ecommerce_app/src/features/cart/domain/mutable_cart.dart';
+import 'package:ecommerce_app/src/features/products/data/fake_products_repository.dart';
 import 'package:ecommerce_app/src/features/products/domain/product.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -71,7 +72,41 @@ final cartProvider = StreamProvider<Cart>((ref) {
 
 final cartItemsCountProvider = Provider<int>((ref) {
   return ref.watch(cartProvider).maybeMap(
+        //this operator takes optional 3 arguments data, async error and async loading
         data: (cart) => cart.value.items.length,
         orElse: () => 0,
       );
+});
+
+final cartTotalProvider = Provider.autoDispose<double>((ref) {
+  final cart = ref.watch(cartProvider).value ?? const Cart();
+  final productsList = ref.watch(productsListStreamProvider).value ?? [];
+  // Calculate and return total
+  if (cart.items.isNotEmpty && productsList.isNotEmpty) {
+    // get the price of all items as a list
+    var total = 0.0;
+    for (var item in cart.items.entries) {
+      final product =
+          productsList.firstWhere((product) => product.id == item.key);
+      total += product.price * item.value;
+    }
+    return total;
+  } else {
+    return 0.0;
+  }
+  /*
+  Alternative using reduce()
+As an alternative to the for loop above, we can use the reduce operator:
+
+if (cart.items.isNotEmpty && productsList.isNotEmpty) {
+  // get the price of all items as a list
+  return cart.items.entries.map((item) {
+    final product =
+        productsList.firstWhere((product) => product.id == item.key);
+    return product.price * item.value;
+  }).reduce((value, itemPrice) => value + itemPrice);
+} else {
+  return 0.0;
+}
+  */
 });
