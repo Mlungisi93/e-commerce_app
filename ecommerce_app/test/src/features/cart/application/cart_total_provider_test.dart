@@ -20,17 +20,19 @@ void main() {
       return container;
     }
 
-    test('loading cart', () async {
+    test('loading cart, empty stream', () async {
       final container = makeProviderContainer(
-        cart: const Stream.empty(),
-        products: Stream.value(kTestProducts),
+        cart: const Stream
+            .empty(), //replaced AsyncLoding() since from reverpod 2.0 SteamProvider.overrideWithValue is no longer available
+        products:
+            Stream.value(kTestProducts), //replaced AsyncData(KtestProducts)
       );
-      await container.read(productsListStreamProvider.future);
+      container.read(productsListStreamProvider);
       final total = container.read(cartTotalProvider);
       expect(total, 0);
     });
 
-    test('empty cart', () async {
+    test('empty cart object', () async {
       final container = makeProviderContainer(
         cart: Stream.value(const Cart()),
         products: Stream.value(kTestProducts),

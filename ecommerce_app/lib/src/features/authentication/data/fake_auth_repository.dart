@@ -42,6 +42,7 @@ final authRepositoryProvider = Provider<FakeAuthRepository>((ref) {
   return auth;
 });
 
+// we removed auto disposed as we nned to listen to this stream as long as the app is running
 final authStateChangesProvider = StreamProvider<AppUser?>((ref) {
   final authRepository = ref.watch(authRepositoryProvider);
   return authRepository.authStateChanges();

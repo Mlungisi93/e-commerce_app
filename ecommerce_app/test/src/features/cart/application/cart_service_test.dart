@@ -41,10 +41,11 @@ void main() {
   group('setItem', () {
     test('null user, writes item to local cart', () async {
       // setup
+      const initialCart = Cart({'123': 2});
       const expectedCart = Cart({'123': 1});
       when(() => authRepository.currentUser).thenReturn(null);
       when(localCartRepository.fetchCart).thenAnswer(
-        (_) => Future.value(const Cart()),
+        (_) => Future.value(initialCart),
       );
       when(() => localCartRepository.setCart(expectedCart)).thenAnswer(
         (_) => Future.value(),

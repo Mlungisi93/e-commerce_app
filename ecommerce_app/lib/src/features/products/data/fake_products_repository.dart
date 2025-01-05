@@ -22,6 +22,7 @@ class FakeProductsRepository {
   }
 
   Stream<List<Product>> watchProductsList() async* {
+    // await delay(addDelay, 5000); // testing shimmer
     await delay(addDelay);
     yield _products;
   }
@@ -41,7 +42,7 @@ class FakeProductsRepository {
 
 final productsRepositoryProvider = Provider<FakeProductsRepository>((ref) {
   // * Set addDelay to false for faster loading
-  return FakeProductsRepository(addDelay: false);
+  return FakeProductsRepository(addDelay: true);
 });
 
 final productsListStreamProvider =

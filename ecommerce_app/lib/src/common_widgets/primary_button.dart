@@ -9,16 +9,25 @@ import 'package:ecommerce_app/src/constants/app_sizes.dart';
 /// @param onPressed - callback to be called when the button is pressed.
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
-      {super.key, required this.text, this.isLoading = false, this.onPressed});
+      {super.key,
+      required this.text,
+      this.isLoading = false,
+      this.onPressed,
+      this.backgroundColor});
   final String text;
   final bool isLoading;
   final VoidCallback? onPressed;
+  final Color? backgroundColor;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: Sizes.p48,
       child: ElevatedButton(
         onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: backgroundColor, // foreground
+        ),
         child: isLoading
             ? const CircularProgressIndicator()
             : Text(

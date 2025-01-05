@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="acd9eebd-eef4-4836-b690-ce12569b92d9" name="Changes" comment="24 Unit-testing providers with dependencies using ProviderContainer">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/lib/src/features/cart/application/cart_sync_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/lib/src/features/cart/application/cart_sync_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/test/src/features/cart/application/cart_sync_service_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/cart/application/cart_sync_service_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ecommerce_app/test/src/features/cart/application/cart_total_provider_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/ecommerce_app/test/src/features/cart/application/cart_total_provider_test.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="section08-end-part-1_mlue" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mlungisi93&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Mlungisi93/e-commerce_app.git&quot;,
+    &quot;accountId&quot;: &quot;aee8684e-0413-4f42-a7c8-0d65b8d2c775&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2mWjGukcQmKAdYRZDEpj9yC2HB8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;section08-finished&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="&#10;12 updating the AddToCartWidget with Add To Cart Error Fix o samband throw">
+      <option name="closed" value="true" />
+      <created>1726723294451</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726723294451</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&#10;14 Showing the cart items in the ShoppingCartScreen">
+      <option name="closed" value="true" />
+      <created>1726979694714</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726979694714</updated>
+    </task>
+    <task id="LOCAL-00003" summary="&#10;15  Implementing ShoppingCartScreenController">
+      <option name="closed" value="true" />
+      <created>1726980461543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726980461543</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&#10;16  Update ShoppingCartScreen and EditOrRemoveItemWidget">
+      <option name="closed" value="true" />
+      <created>1726982299122</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726982299122</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&#10;17 Calculating and showing the cart items count">
+      <option name="closed" value="true" />
+      <created>1727012836039</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727012836039</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&#10;18 Calculating and showing the cart total price">
+      <option name="closed" value="true" />
+      <created>1727014570358</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727014570358</updated>
+    </task>
+    <task id="LOCAL-00007" summary="19 Limiting the available quantity when adding items to the shopping cart">
+      <option name="closed" value="true" />
+      <created>1727107085387</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727107085387</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20 Implementing  CartSyncService with a listener">
+      <option name="closed" value="true" />
+      <created>1727109199840</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727109199840</updated>
+    </task>
+    <task id="LOCAL-00009" summary="24 Unit-testing providers with dependencies using ProviderContainer">
+      <option name="closed" value="true" />
+      <created>1727191869089</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727191869089</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="acd9eebd-eef4-4836-b690-ce12569b92d9" name="Changes" comment="24 Unit-testing providers with dependencies using ProviderContainer" />
+      <created>1727199135863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727199135863</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&#10;12 updating the AddToCartWidget with Add To Cart Error Fix o samband throw" />
+    <MESSAGE value="&#10;14 Showing the cart items in the ShoppingCartScreen" />
+    <MESSAGE value="&#10;15  Implementing ShoppingCartScreenController" />
+    <MESSAGE value="&#10;16  Update ShoppingCartScreen and EditOrRemoveItemWidget" />
+    <MESSAGE value="&#10;17 Calculating and showing the cart items count" />
+    <MESSAGE value="&#10;18 Calculating and showing the cart total price" />
+    <MESSAGE value="19 Limiting the available quantity when adding items to the shopping cart" />
+    <MESSAGE value="20 Implementing  CartSyncService with a listener" />
+    <MESSAGE value="24 Unit-testing providers with dependencies using ProviderContainer" />
+    <option name="LAST_COMMIT_MESSAGE" value="24 Unit-testing providers with dependencies using ProviderContainer" />
+  </component>
+</project>

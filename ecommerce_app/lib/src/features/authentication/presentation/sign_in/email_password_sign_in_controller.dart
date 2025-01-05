@@ -8,6 +8,7 @@ class EmailPasswordSignInController
     required EmailPasswordSignInFormType formType,
     required this.authRepository,
   }) : super(EmailPasswordSignInState(formType: formType));
+
   final FakeAuthRepository authRepository;
 
   Future<bool> submit(String email, String password) async {

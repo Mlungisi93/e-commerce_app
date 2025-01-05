@@ -41,6 +41,17 @@ class ProductsGrid extends ConsumerWidget {
                 );
               },
             ),
+      loading: () => ProductsLayoutGrid(
+        itemCount: 6,
+        itemBuilder: (_, index) {
+          const product = Product.defaultProduct();
+          return ProductCard(
+            product: product,
+            onPressed: () => () {},
+            isLoading: true,
+          );
+        },
+      ),
     );
   }
 }

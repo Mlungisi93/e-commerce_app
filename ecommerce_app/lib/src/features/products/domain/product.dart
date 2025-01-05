@@ -14,6 +14,16 @@ class Product {
     this.numRatings = 0,
   });
 
+  const Product.defaultProduct()
+      : id = '',
+        imageUrl = '',
+        title = '',
+        description = '',
+        price = 0.0,
+        availableQuantity = 0,
+        avgRating = 0.0,
+        numRatings = 0;
+
   /// Unique product id
   final ProductID id;
   final String imageUrl;

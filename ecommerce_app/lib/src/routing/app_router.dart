@@ -8,6 +8,7 @@ import 'package:ecommerce_app/src/features/orders/presentation/orders_list/order
 import 'package:ecommerce_app/src/features/products/presentation/product_screen/product_screen.dart';
 import 'package:ecommerce_app/src/features/products/presentation/products_list/products_list_screen.dart';
 import 'package:ecommerce_app/src/features/reviews/presentation/leave_review_screen/leave_review_screen.dart';
+import 'package:ecommerce_app/src/features/wishlist/presentation/wish_list_cart/wish_list_screen.dart';
 import 'package:ecommerce_app/src/routing/go_router_refresh_stream.dart';
 import 'package:ecommerce_app/src/routing/not_found_screen.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,7 @@ enum AppRoute {
   product,
   leaveReview,
   cart,
+  wishList,
   checkout,
   orders,
   account,
@@ -89,6 +91,14 @@ final goRouterProvider = Provider<GoRouter>((ref) {
                 ),
               ),
             ],
+          ),
+          GoRoute(
+            path: 'wishList',
+            name: AppRoute.wishList.name,
+            pageBuilder: (context, state) => const MaterialPage(
+              fullscreenDialog: true,
+              child: WishListCartScreen(),
+            ),
           ),
           GoRoute(
             path: 'orders',

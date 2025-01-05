@@ -119,5 +119,5 @@ firebase-exports
 .env.stg
 .env.prod
 
-# Ignore test coverage data
+# Ignore test coverage data as this file is updated every time we run flutter test --coverage
 coverage/lcov.info

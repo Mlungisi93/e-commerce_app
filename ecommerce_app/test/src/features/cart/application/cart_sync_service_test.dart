@@ -24,6 +24,9 @@ void main() {
     remoteCartRepository = MockRemoteCartRepository();
     localCartRepository = MockLocalCartRepository();
     productsRepository = MockProductsRepository();
+    // Register fallback values for the mocks
+    registerFallbackValue(const Cart());
+    registerFallbackValue(const AppUser(uid: '123', email: 'test@test.com'));
   });
 
   CartSyncService makeCartSyncService() {
@@ -79,6 +82,7 @@ void main() {
         expectedRemoteCartItems: {'1': 1},
       );
     });
+
     test('local quantity > available quantity', () async {
       await runCartSyncTest(
         localCartItems: {'1': 15},
@@ -108,6 +112,33 @@ void main() {
         remoteCartItems: {'1': 3},
         expectedRemoteCartItems: {'1': 5, '2': 1, '3': 2},
       );
+    });
+
+    test('does not move items if local cart is empty', () async {
+      // Setup
+      const localCart = Cart({});
+      const remoteCart = Cart({'1': 1, '2': 2});
+      // when(() => authRepository.authStateChanges).thenAnswer(
+      //   (_) => () => Stream.value(
+      //       const AppUser(uid: '123', email: 'test@test.com') as AppUser?),
+      // );
+      const uid = '123';
+      when(authRepository.authStateChanges).thenAnswer(
+        (_) => Stream.value(const AppUser(uid: '123', email: 'test@test.com')),
+      );
+      when(() => localCartRepository.fetchCart()).thenAnswer(
+        (_) => Future.value(localCart),
+      );
+      when(() => remoteCartRepository.fetchCart('123')).thenAnswer(
+        (_) => Future.value(remoteCart),
+      );
+
+      // Create cart sync service
+      makeCartSyncService();
+
+      // Verify
+      verifyNever(() => remoteCartRepository.setCart(any(), any()));
+      verifyNever(() => localCartRepository.setCart(any()));
     });
   });
 }

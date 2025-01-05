@@ -15,6 +15,7 @@ void main() {
   group('FakeAuthRepository', () {
     test('currentUser is null', () {
       final authRepository = makeAuthRepository();
+      //run this even if test fails
       addTearDown(authRepository.dispose);
       expect(authRepository.currentUser, null);
       expect(authRepository.authStateChanges(), emits(null));
@@ -51,8 +52,16 @@ void main() {
       expect(authRepository.currentUser, testUser);
       expect(authRepository.authStateChanges(), emits(testUser));
 
+// emits values overtime and should be observed overtime but is is not intuitive
+      // expect(
+      //     authRepository.authStateChanges(),
+      //     emitsInOrder([
+      //       testUser, // after signin
+      //       null, //after signout
+      //     ]));
+
       await authRepository.signOut();
-      expect(authRepository.currentUser, null);
+      expect(authRepository.currentUser, isNull);
       expect(authRepository.authStateChanges(), emits(null));
     });
 
@@ -65,6 +74,27 @@ void main() {
           testPassword,
         ),
         throwsStateError,
+      );
+    });
+
+    test('register after dispose throws exception', () {
+      final authRepository = makeAuthRepository();
+      authRepository.dispose();
+      expect(
+        () => authRepository.createUserWithEmailAndPassword(
+          testEmail,
+          testPassword,
+        ),
+        throwsStateError,
+      );
+    });
+
+    test('signOut after dispose throws exception', () {
+      final authRepository = makeAuthRepository();
+      authRepository.dispose();
+      expect(
+        () => authRepository.signOut(),
+        throwsA(isA<StateError>()),
       );
     });
   });

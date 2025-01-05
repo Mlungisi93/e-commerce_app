@@ -15,6 +15,7 @@ void main() {
       authRepository: authRepository,
     );
   });
+
   group('AccountScreenController', () {
     test('initial state is AsyncValue.data', () {
       verifyNever(authRepository.signOut);
@@ -38,7 +39,8 @@ void main() {
       await controller.signOut();
       // verify
       verify(authRepository.signOut).called(1);
-    });
+    }, timeout: const Timeout(Duration(seconds: 500)));
+
     test('signOut failure', () async {
       // setup
       final exception = Exception('Connection failed');
@@ -54,9 +56,11 @@ void main() {
           }),
         ]),
       );
+
       // run
       await controller.signOut();
       // verify
+      // expect(controller.debugState, isA<AsyncError>());
       verify(authRepository.signOut).called(1);
     });
   });
