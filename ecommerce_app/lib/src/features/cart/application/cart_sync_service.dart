@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ecommerce_app/src/exceptions/error_logger.dart';
 import 'package:ecommerce_app/src/features/authentication/data/fake_auth_repository.dart';
 import 'package:ecommerce_app/src/features/authentication/domain/app_user.dart';
 import 'package:ecommerce_app/src/features/cart/data/local/local_cart_repository.dart';
@@ -32,6 +33,7 @@ class CartSyncService {
   Future<void> _moveItemsToRemoteCart(String uid) async {
     try {
       // Get the local cart data
+      // throw Exception('Something went wrong');
       final localCartRepository = ref.read(localCartRepositoryProvider);
       final localCart = await localCartRepository.fetchCart();
       if (localCart.items.isNotEmpty) {
@@ -47,8 +49,8 @@ class CartSyncService {
         // Remove all items from the local cart
         await localCartRepository.setCart(const Cart());
       }
-    } catch (e) {
-      // TODO: Handle error and/or rethrow
+    } catch (e, st) {
+      ref.read(errorLoggerProvider).logError(e, st);
     }
   }
 
