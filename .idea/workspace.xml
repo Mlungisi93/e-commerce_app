@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="acd9eebd-eef4-4836-b690-ce12569b92d9" name="Changes" comment="Module 11 lesson 1-11">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="section11-starter_to_finish_mlue" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Mlungisi93&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Mlungisi93/e-commerce_app.git&quot;,
+    &quot;accountId&quot;: &quot;aee8684e-0413-4f42-a7c8-0d65b8d2c775&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2mWjGukcQmKAdYRZDEpj9yC2HB8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.codeium.enabled": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "section11-finished",
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="&#10;12 updating the AddToCartWidget with Add To Cart Error Fix o samband throw">
+      <option name="closed" value="true" />
+      <created>1726723294451</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1726723294451</updated>
+    </task>
+    <task id="LOCAL-00002" summary="&#10;14 Showing the cart items in the ShoppingCartScreen">
+      <option name="closed" value="true" />
+      <created>1726979694714</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1726979694714</updated>
+    </task>
+    <task id="LOCAL-00003" summary="&#10;15  Implementing ShoppingCartScreenController">
+      <option name="closed" value="true" />
+      <created>1726980461543</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1726980461543</updated>
+    </task>
+    <task id="LOCAL-00004" summary="&#10;16  Update ShoppingCartScreen and EditOrRemoveItemWidget">
+      <option name="closed" value="true" />
+      <created>1726982299122</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1726982299122</updated>
+    </task>
+    <task id="LOCAL-00005" summary="&#10;17 Calculating and showing the cart items count">
+      <option name="closed" value="true" />
+      <created>1727012836039</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1727012836039</updated>
+    </task>
+    <task id="LOCAL-00006" summary="&#10;18 Calculating and showing the cart total price">
+      <option name="closed" value="true" />
+      <created>1727014570358</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1727014570358</updated>
+    </task>
+    <task id="LOCAL-00007" summary="19 Limiting the available quantity when adding items to the shopping cart">
+      <option name="closed" value="true" />
+      <created>1727107085387</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1727107085387</updated>
+    </task>
+    <task id="LOCAL-00008" summary="20 Implementing  CartSyncService with a listener">
+      <option name="closed" value="true" />
+      <created>1727109199840</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727109199840</updated>
+    </task>
+    <task id="LOCAL-00009" summary="24 Unit-testing providers with dependencies using ProviderContainer">
+      <option name="closed" value="true" />
+      <created>1727191869089</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727191869089</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="acd9eebd-eef4-4836-b690-ce12569b92d9" name="Changes" comment="24 Unit-testing providers with dependencies using ProviderContainer" />
+      <created>1727199135863</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1727199135863</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Module 10 lesson 08 Error Handling">
+      <option name="closed" value="true" />
+      <created>1736443172444</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1736443172444</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Module 11 lesson 1-11">
+      <option name="closed" value="true" />
+      <created>1736830315534</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736830315534</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&#10;12 updating the AddToCartWidget with Add To Cart Error Fix o samband throw" />
+    <MESSAGE value="&#10;14 Showing the cart items in the ShoppingCartScreen" />
+    <MESSAGE value="&#10;15  Implementing ShoppingCartScreenController" />
+    <MESSAGE value="&#10;16  Update ShoppingCartScreen and EditOrRemoveItemWidget" />
+    <MESSAGE value="&#10;17 Calculating and showing the cart items count" />
+    <MESSAGE value="&#10;18 Calculating and showing the cart total price" />
+    <MESSAGE value="19 Limiting the available quantity when adding items to the shopping cart" />
+    <MESSAGE value="20 Implementing  CartSyncService with a listener" />
+    <MESSAGE value="24 Unit-testing providers with dependencies using ProviderContainer" />
+    <MESSAGE value="section09 working" />
+    <MESSAGE value="Module 10 lesson 08 Error Handling" />
+    <MESSAGE value="Module 11 lesson 1-11" />
+    <option name="LAST_COMMIT_MESSAGE" value="Module 11 lesson 1-11" />
+  </component>
+</project>
