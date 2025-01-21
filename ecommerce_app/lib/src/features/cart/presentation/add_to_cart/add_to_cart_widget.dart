@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:ecommerce_app/src/common_widgets/added_to_cart_dialog.dart';
 import 'package:ecommerce_app/src/features/cart/application/cart_service.dart';
 import 'package:ecommerce_app/src/features/cart/presentation/add_to_cart/add_to_cart_controller.dart';
 import 'package:ecommerce_app/src/localization/string_hardcoded.dart';
@@ -53,9 +54,23 @@ class AddToCartWidget extends ConsumerWidget {
           isLoading: state.isLoading,
           // only enable the button if there is enough stock
           onPressed: availableQuantity > 0
-              ? () => ref
-                  .read(addToCartControllerProvider.notifier)
-                  .addItem(product.id)
+              ? () {
+                  ref
+                      .read(addToCartControllerProvider.notifier)
+                      .addItem(product.id);
+                  // showAddedToCartDialog(
+                  //     context, product.title, product.imageUrl, product.price);
+                  showAddedToCartDialog(
+                    context,
+                    'Product Name',
+                    'Product Description',
+                    product.imageUrl,
+                    'Go to Cart',
+                    () {
+                      // Handle button press
+                    },
+                  );
+                }
               : null,
           text: availableQuantity > 0
               ? 'Add to Cart'.hardcoded
